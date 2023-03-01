@@ -1,21 +1,25 @@
 vim.cmd.colorscheme('hybrid')
-vim.o.background = 'dark'
+vim.o.background  = 'dark'
 
 function toggle_colors()
-    local color = vim.g.colors_name
-    local mode  = vim.o.background
+    local current_color = vim.g.colors_name
+    local current_bg    = vim.o.background
 
-    if color == 'hybrid' and mode == 'light' then
-        vim.o.background = 'dark'
+    if current_color == 'hybrid' and current_bg == 'dark' then
+        vim.cmd.colorscheme('hybrid')
+        vim.o.background  = 'light'
+    elseif current_color == 'hybrid' and current_bg == 'light' then
         vim.cmd.colorscheme('off')
-    elseif color == 'hybrid' and mode == 'dark' then
-        vim.o.background = 'light'
+        vim.o.background  = 'dark'
+    elseif current_color == 'off' and current_bg == 'dark' then
+        vim.cmd.colorscheme('off')
+        vim.o.background  = 'light'
+    else -- if current_color == 'off' and current_bg = 'dark' then
         vim.cmd.colorscheme('hybrid')
-    else
-        vim.o.background = 'dark'
-        vim.cmd.colorscheme('hybrid')
+        vim.o.background  = 'dark'
     end
+
+    print('color: ' .. vim.g.colors_name .. '-' .. vim.o.background)
 end
 
-vim.api.nvim_create_user_command('ToggleColors', toggle_colors, { })
 vim.keymap.set('n', '<F5>', toggle_colors)
