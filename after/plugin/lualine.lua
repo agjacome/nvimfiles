@@ -1,17 +1,17 @@
 require('lualine').setup({
     options = {
         icons_enabled = false,
-        theme = 'powerline'
+        theme         = 'powerline'
     },
     tabline = {
       lualine_a = {
           {
               'buffers',
-              mode = 2,
+              mode    = 2,
               symbols = {
-                  modified = '*',
+                  modified       = '*',
                   alternate_file = '',
-                  directory = '',
+                  directory      = '',
               }
           }
       },

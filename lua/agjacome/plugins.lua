@@ -15,6 +15,7 @@ local is_new_packer_install = bootstrap_packer()
 return require('packer').startup(function(use)
   use { 'wbthomason/packer.nvim' }
 
+  use { 'junegunn/vim-easy-align'                        }
   use { 'nvim-lua/plenary.nvim'                          }
   use { 'nvim-lualine/lualine.nvim'                      }
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.x'   }
