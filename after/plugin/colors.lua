@@ -1,5 +1,5 @@
 vim.cmd.colorscheme('hybrid')
-vim.o.background  = 'dark'
+vim.o.background = 'dark'
 
 function toggle_colors()
     local current_color = vim.g.colors_name
