@@ -13,12 +13,13 @@ end
 local is_new_packer_install = bootstrap_packer()
 
 return require('packer').startup(function(use)
-  -- https://github.com/wbthomason/packer.nvim
   use 'wbthomason/packer.nvim'
 
   use 'pbrisbin/vim-colors-off'
   use 'w0ng/vim-hybrid'
-  use { 'nvim-telescope/telescope.nvim', tag = '0.1.x', requires = { {'nvim-lua/plenary.nvim'} } }
+  use 'nvim-lua/plenary.nvim'
+  use { 'nvim-telescope/telescope.nvim', tag = '0.1.x' }
+  use { 'nvim-tree/nvim-tree.lua',       tag = 'nightly' }
 
   if is_new_packer_install then
     require('packer').sync()
