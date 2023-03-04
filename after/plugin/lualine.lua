@@ -7,7 +7,13 @@ require('lualine').setup({
       lualine_a = {
           {
               'buffers',
-              mode    = 2,
+              mode    = 0,
+              filetype_names = {
+                  NvimTree        = 'NVimTree',
+                  TelescopePrompt = 'Telescope',
+                  fugitive        = 'Fugitive',
+                  packer          = 'Packer',
+              },
               symbols = {
                   modified       = '*',
                   alternate_file = '',
