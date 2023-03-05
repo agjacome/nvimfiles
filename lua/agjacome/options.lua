@@ -3,6 +3,8 @@ vim.opt.expandtab      = true
 vim.opt.guicursor      = ''
 vim.opt.hlsearch       = true
 vim.opt.incsearch      = true
+vim.opt.list           = true
+vim.opt.listchars      = { extends = '❯', precedes = '❮', nbsp = '⋅', trail = '⋅', tab = '▸ ' }
 vim.opt.number         = true
 vim.opt.relativenumber = true
 vim.opt.scrolloff      = 8
