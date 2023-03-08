@@ -22,4 +22,4 @@ function toggle_colors()
     print('color: ' .. vim.g.colors_name .. '-' .. vim.o.background)
 end
 
-vim.keymap.set('n', '<f5>', toggle_colors, { noremap = true })
+vim.keymap.set('n', '<f5>', toggle_colors, { remap = false })

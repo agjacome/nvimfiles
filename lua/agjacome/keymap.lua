@@ -1,8 +1,8 @@
 vim.g.mapleader      = ','
 vim.g.maplocalleader = ';'
 
-local nore   = { noremap = true }
-local silent = { noremap = true, silent = true }
+local nore   = { remap = false }
+local silent = { remap = false, silent = true }
 
 -- disable stuff
 vim.keymap.set('n', 'q:',      '<nop>', nore)

@@ -1,4 +1,4 @@
-vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { noremap = true })
+vim.keymap.set('n', '<leader>gs', vim.cmd.Git, { remap = false })
 
 local fugitive_group = vim.api.nvim_create_augroup('Fugitive', {})
 
@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
         end
 
         local buffer_num = vim.api.nvim_get_current_buf()
-        local map_opts   = { buffer = buffer_num, noremap = true }
+        local map_opts   = { buffer = buffer_num, remap = false }
 
         function git_push() vim.cmd.Git('push') end
         function git_pull() vim.cmd.Git('pull --rebase --autostash') end

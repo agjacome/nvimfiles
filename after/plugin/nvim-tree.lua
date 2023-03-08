@@ -30,4 +30,4 @@ nvim_tree.setup({
     }
 })
 
-vim.keymap.set('n', '<leader>f', ':NvimTreeToggle<CR>', { silent = true, noremap =  true }) 
+vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeToggle, { remap = false, silent = true }) 
