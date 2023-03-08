@@ -14,3 +14,15 @@ autocmd('BufWritePre', {
     pattern = '*',
     command = [[%s/\s\+$//e]]
 })
+
+-- Highlight yanked text
+autocmd('TextYankPost', {
+    group    = group,
+    pattern  = '*',
+    callback = function()
+        vim.highlight.on_yank({
+            higroup = 'IncSearch',
+            timeout = 150
+        })
+    end
+})
