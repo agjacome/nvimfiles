@@ -25,6 +25,7 @@ return require('packer').startup({
 
         use { 'junegunn/vim-easy-align'                            }
         use { 'justinmk/vim-gtfo'                                  }
+        use { 'mbbill/undotree'                                    }
         use { 'numtostr/comment.nvim'                              }
         use { 'nvim-lua/plenary.nvim'                              }
         use { 'nvim-lualine/lualine.nvim'                          }
