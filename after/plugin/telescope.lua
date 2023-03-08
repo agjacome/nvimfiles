@@ -1,4 +1,8 @@
-local telescope = require('telescope.builtin')
+local status_ok, telescope = pcall(require, 'telescope.builtin')
+
+if not status_ok then
+    return
+end
 
 function telescope_grep()
     telescope.grep_string({ search = vim.fn.input('grep > ') })
