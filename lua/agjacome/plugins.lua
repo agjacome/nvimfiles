@@ -17,12 +17,12 @@ return require('packer').startup(function(use)
 
   use { 'junegunn/vim-easy-align'                        }
   use { 'justinmk/vim-gtfo'                              }
+  use { 'numtostr/comment.nvim'                          }
   use { 'nvim-lua/plenary.nvim'                          }
   use { 'nvim-lualine/lualine.nvim'                      }
   use { 'nvim-telescope/telescope.nvim', tag = '0.1.x'   }
   use { 'nvim-tree/nvim-tree.lua',       tag = 'nightly' }
   use { 'pbrisbin/vim-colors-off'                        }
-  use { 'preservim/nerdcommenter'                        }
   use { 'tpope/vim-fugitive'                             }
   use { 'w0ng/vim-hybrid'                                }
 
