@@ -23,6 +23,7 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
+        use { 'gen740/smoothcursor.nvim'                           }
         use { 'junegunn/vim-easy-align'                            }
         use { 'justinmk/vim-gtfo'                                  }
         use { 'mbbill/undotree'                                    }
