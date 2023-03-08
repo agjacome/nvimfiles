@@ -12,21 +12,42 @@ end
 
 local is_new_packer_install = bootstrap_packer()
 
-return require('packer').startup(function(use)
-  use { 'wbthomason/packer.nvim' }
+-- auto-sync packer after saving this file
+local packer_group = vim.api.nvim_create_augroup('Packer', {})
+vim.api.nvim_create_autocmd('BufWritePost', {
+    group   = packer_group,
+    pattern = 'plugins.lua',
+    command = 'source <afile> | PackerSync'
+})
 
-  use { 'junegunn/vim-easy-align'                        }
-  use { 'justinmk/vim-gtfo'                              }
-  use { 'numtostr/comment.nvim'                          }
-  use { 'nvim-lua/plenary.nvim'                          }
-  use { 'nvim-lualine/lualine.nvim'                      }
-  use { 'nvim-telescope/telescope.nvim', tag = '0.1.x'   }
-  use { 'nvim-tree/nvim-tree.lua',       tag = 'nightly' }
-  use { 'pbrisbin/vim-colors-off'                        }
-  use { 'tpope/vim-fugitive'                             }
-  use { 'w0ng/vim-hybrid'                                }
+return require('packer').startup({
+    function(use)
+        use { 'wbthomason/packer.nvim' }
 
-  if is_new_packer_install then
-    require('packer').sync()
-  end
-end)
+        use { 'junegunn/vim-easy-align'                        }
+        use { 'justinmk/vim-gtfo'                              }
+        use { 'numtostr/comment.nvim'                          }
+        use { 'nvim-lua/plenary.nvim'                          }
+        use { 'nvim-lualine/lualine.nvim'                      }
+        use { 'nvim-telescope/telescope.nvim', tag = '0.1.x'   }
+        use { 'nvim-tree/nvim-tree.lua',       tag = 'nightly' }
+        use { 'pbrisbin/vim-colors-off'                        }
+        use { 'tpope/vim-fugitive'                             }
+        use { 'w0ng/vim-hybrid'                                }
+
+        if is_new_packer_install then
+            require('packer').sync()
+        end
+    end,
+    config = {
+        display = {
+            open_fn = function()
+                return require('packer.util').float({
+                    border = 'single',
+                    height = 20
+                })
+            end
+        }
+    }
+})
+
