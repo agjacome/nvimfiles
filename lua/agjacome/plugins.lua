@@ -21,8 +21,10 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 return require('packer').startup({
     function(use)
+        -- Self-managed Packer
         use { 'wbthomason/packer.nvim' }
 
+        -- Plugins
         use { 'gen740/smoothcursor.nvim'                           }
         use { 'junegunn/vim-easy-align'                            }
         use { 'justinmk/vim-gtfo'                                  }
@@ -38,6 +40,30 @@ return require('packer').startup({
         use { 'pbrisbin/vim-colors-off'                            }
         use { 'tpope/vim-fugitive'                                 }
         use { 'w0ng/vim-hybrid'                                    }
+
+        -- LSP
+        use {
+            'VonHeikemen/lsp-zero.nvim',
+            branch = 'v1.x',
+            requires = {
+                -- LSP Support
+                {'neovim/nvim-lspconfig'},
+                {'williamboman/mason.nvim'},
+                {'williamboman/mason-lspconfig.nvim'},
+
+                -- Autocompletion
+                {'hrsh7th/nvim-cmp'},
+                {'hrsh7th/cmp-nvim-lsp'},
+                {'hrsh7th/cmp-buffer'},
+                {'hrsh7th/cmp-path'},
+                {'saadparwaiz1/cmp_luasnip'},
+                {'hrsh7th/cmp-nvim-lua'},
+
+                -- Snippets
+                {'L3MON4D3/LuaSnip'},
+                {'rafamadriz/friendly-snippets'},
+            }
+        }
 
         if is_new_packer_install then
             require('packer').sync()
