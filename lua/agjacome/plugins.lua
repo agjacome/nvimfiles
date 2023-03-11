@@ -21,10 +21,8 @@ vim.api.nvim_create_autocmd('BufWritePost', {
 
 return require('packer').startup({
     function(use)
-        -- Self-managed Packer
         use { 'wbthomason/packer.nvim' }
 
-        -- Plugins
         use { 'folke/neodev.nvim'                                  }
         use { 'folke/trouble.nvim'                                 }
         use { 'folke/zen-mode.nvim'                                }
@@ -44,7 +42,11 @@ return require('packer').startup({
         use { 'tpope/vim-fugitive'                                 }
         use { 'w0ng/vim-hybrid'                                    }
 
-        -- LSP
+        use {
+            'iamcco/markdown-preview.nvim',
+            run = function() vim.fn["mkdp#util#install"]() end
+        }
+
         use {
             'VonHeikemen/lsp-zero.nvim',
             branch = 'v1.x',
