@@ -27,7 +27,10 @@ nvim_tree.setup({
                 modified     = false
             }
         }
+    },
+    update_focused_file = {
+        enable = true
     }
 })
 
-vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeToggle, { remap = false, silent = true }) 
+vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeFindFileToggle, { remap = false, silent = true })
