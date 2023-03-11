@@ -25,6 +25,7 @@ return require('packer').startup({
         use { 'wbthomason/packer.nvim' }
 
         -- Plugins
+        use { 'folke/trouble.nvim'                                 }
         use { 'folke/zen-mode.nvim'                                }
         use { 'junegunn/vim-easy-align'                            }
         use { 'justinmk/vim-gtfo'                                  }
