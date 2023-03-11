@@ -6,8 +6,10 @@ end
 
 lualine.setup({
     options = {
-        icons_enabled = false,
-        theme         = 'powerline'
+        component_separators = '|',
+        icons_enabled        = false,
+        section_separators   = '',
+        theme                = 'powerline',
     },
     tabline = {
       lualine_a = {
