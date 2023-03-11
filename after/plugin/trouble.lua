@@ -6,9 +6,11 @@ end
 
 trouble.setup({ icons = false })
 
-local silent = { remap = false, silent = true }
+local opts = function(desc)
+    return { desc = desc, remap = false, silent = true }
+end
 
-vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>',                      silent)
-vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', silent)
-vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>',             silent)
+vim.keymap.set('n', '<leader>xx', '<cmd>TroubleToggle<cr>',                      opts('Toggle Trouble'))
+vim.keymap.set('n', '<leader>xd', '<cmd>TroubleToggle document_diagnostics<cr>', opts('Show document diagnostics (Trouble)'))
+vim.keymap.set('n', '<leader>xq', '<cmd>TroubleToggle quickfix<cr>',             opts('Show quickfix window (Trouble)'))
 

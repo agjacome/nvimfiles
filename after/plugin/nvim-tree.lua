@@ -33,4 +33,4 @@ nvim_tree.setup({
     }
 })
 
-vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeFindFileToggle, { remap = false, silent = true })
+vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeFindFileToggle, { desc = 'Toggle NvimTree', remap = false, silent = true })

@@ -24,4 +24,4 @@ zen_mode.setup({
     }
 })
 
-vim.keymap.set('n', '<leader>z', zen_mode.toggle)
+vim.keymap.set('n', '<leader>z', zen_mode.toggle, { desc = 'Toggle ZenMode', remap = false, silent = true })

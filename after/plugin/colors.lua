@@ -1,7 +1,7 @@
 vim.cmd.colorscheme('hybrid')
 vim.o.background = 'dark'
 
-function toggle_colors()
+local toggle_colors = function()
     local current_color = vim.g.colors_name
     local current_bg    = vim.o.background
 
@@ -22,4 +22,4 @@ function toggle_colors()
     print('color: ' .. vim.g.colors_name .. '-' .. vim.o.background)
 end
 
-vim.keymap.set('n', '<f5>', toggle_colors, { remap = false })
+vim.keymap.set('n', '<f5>', toggle_colors, { remap = false, desc = 'Toggle colorscheme' })

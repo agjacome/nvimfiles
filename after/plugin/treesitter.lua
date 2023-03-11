@@ -17,4 +17,4 @@ treesitter.setup({
     }
 })
 
-vim.keymap.set('n', '<leader>c', vim.cmd.TSContextToggle, { remap = false, silent = true })
+vim.keymap.set('n', '<leader>c', vim.cmd.TSContextToggle, { desc = 'Toggle context (TreeSitter)', remap = false, silent = true })

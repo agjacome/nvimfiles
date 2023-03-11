@@ -10,19 +10,22 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
             return
         end
 
-        local buffer_num = vim.api.nvim_get_current_buf()
-        local map_opts   = { buffer = buffer_num, remap = false }
+        local buffer = vim.api.nvim_get_current_buf()
 
-        function git_push() vim.cmd.Git('push') end
-        function git_pull() vim.cmd.Git('pull --rebase --autostash') end
-        vim.keymap.set('n', '<leader>P', git_push, map_opts)
-        vim.keymap.set('n', '<leader>p', git_pull, map_opts)
+        local opts = function(desc)
+            return { buffer = buffer, desc = desc, remap = false, silent = true }
+        end
+
+        local git_push = function() vim.cmd.Git('push') end
+        local git_pull = function() vim.cmd.Git('pull --rebase --autostash') end
+        vim.keymap.set('n', '<leader>P', git_push, opts('Git push (Fugitive)'))
+        vim.keymap.set('n', '<leader>p', git_pull, opts('Git pull (Fugitive)'))
 
         local status_ok, telescope = pcall(require, 'telescope.builtin')
         if status_ok then
-            vim.keymap.set('n', '<leader>gb',  telescope.git_branches, map_opts)
-            vim.keymap.set('n', '<leader>gc',  telescope.git_commits,  map_opts)
-            vim.keymap.set('n', '<leader>gst', telescope.git_stash,    map_opts)
+            vim.keymap.set('n', '<leader>gb',  telescope.git_branches, opts('Show Git branches (Telescope)'))
+            vim.keymap.set('n', '<leader>gc',  telescope.git_commits,  opts('Show Git commits (Telescope)'))
+            vim.keymap.set('n', '<leader>gst', telescope.git_stash,    opts('Show Git stashes (Telescope)'))
         end
     end
 })
