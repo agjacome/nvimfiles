@@ -9,7 +9,7 @@ lualine.setup({
         component_separators = '|',
         icons_enabled        = false,
         section_separators   = '',
-        theme                = 'powerline',
+        theme                = 'catppuccin',
     },
     tabline = {
       lualine_a = {

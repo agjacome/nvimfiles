@@ -23,6 +23,7 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
+        use { 'catppuccin/nvim',                 as = 'catpuccin'  }
         use { 'folke/neodev.nvim'                                  }
         use { 'folke/trouble.nvim'                                 }
         use { 'folke/zen-mode.nvim'                                }
@@ -40,7 +41,6 @@ return require('packer').startup({
         use { 'nvim-treesitter/nvim-treesitter-context'            }
         use { 'pbrisbin/vim-colors-off'                            }
         use { 'tpope/vim-fugitive'                                 }
-        use { 'w0ng/vim-hybrid'                                    }
 
         use {
             'iamcco/markdown-preview.nvim',
