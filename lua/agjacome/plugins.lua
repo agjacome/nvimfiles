@@ -41,6 +41,7 @@ return require('packer').startup({
         use { 'nvim-treesitter/nvim-treesitter-context'            }
         use { 'pbrisbin/vim-colors-off'                            }
         use { 'tpope/vim-fugitive'                                 }
+        use { "zbirenbaum/copilot.lua"                             }
 
         use {
             'iamcco/markdown-preview.nvim',
