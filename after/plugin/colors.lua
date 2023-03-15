@@ -1,34 +1,41 @@
-local status_ok, catppuccin = pcall(require, 'catppuccin')
+local status_ok, onedark = pcall(require, 'onedark')
 
 if not status_ok then
     return
 end
 
-catppuccin.setup({
-    flavour   = 'macchiato',
-    no_italic = true,
-    no_bold   = true
+onedark.setup({
+    code_style = {
+        comments  = 'none',
+        keywords  = 'none',
+        functions = 'none',
+        strings   = 'none',
+        variables = 'none'
+    },
+    style = 'warmer',
+    -- self-managed to include also 'off' colorscheme (see below)
+    -- toggle_style_key  = '<f5>',
+    -- toggle_style_list = { 'light', 'warmer' },
 })
 
-vim.cmd.Catppuccin('macchiato')
+onedark.load()
+
+local current_style_idx = 1;
+local styles = {
+    { color = 'onedark', background = 'dark',  style = 'warmer' },
+    { color = 'off',     background = 'dark',  style = 'warmer' },
+    { color = 'onedark', background = 'light', style = 'light'  },
+    { color = 'off',     background = 'light', style = 'light'  },
+}
 
 local toggle_colors = function()
-    local current_color = vim.g.colors_name
-    local current_bg    = vim.o.background
+    current_style_idx = math.fmod(current_style_idx, #styles) + 1
 
-    if current_color == 'catppuccin' and current_bg == 'dark' then
-        vim.cmd.Catppuccin('latte')
-    elseif current_color == 'catppuccin' and current_bg == 'light' then
-        vim.cmd.colorscheme('off')
-        vim.o.background  = 'dark'
-    elseif current_color == 'off' and current_bg == 'dark' then
-        vim.cmd.colorscheme('off')
-        vim.o.background  = 'light'
-    else -- if current_color == 'off' and current_bg = 'dark' then
-        vim.cmd.Catppuccin('macchiato')
-    end
+    local style = styles[current_style_idx]
 
-    print('color: ' .. vim.g.colors_name .. '-' .. vim.o.background)
+    vim.cmd.colorscheme(style.color)
+    vim.g.onedark_config.style = style.style
+    vim.o.background = style.background
 end
 
-vim.keymap.set('n', '<f5>', toggle_colors, { remap = false, desc = 'Toggle colorscheme' })
+vim.keymap.set('n', '<f5>', toggle_colors, { remap = false, desc = 'Toggle colors' })

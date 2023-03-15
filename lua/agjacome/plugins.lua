@@ -23,7 +23,6 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
-        use { 'catppuccin/nvim',                 as = 'catpuccin'  }
         use { 'folke/neodev.nvim'                                  }
         use { 'folke/trouble.nvim'                                 }
         use { 'folke/zen-mode.nvim'                                }
@@ -32,6 +31,7 @@ return require('packer').startup({
         use { 'lewis6991/gitsigns.nvim'                            }
         use { 'mbbill/undotree'                                    }
         use { 'mg979/vim-visual-multi'                             }
+        use { 'navarasu/onedark.nvim'                              }
         use { 'numtostr/comment.nvim'                              }
         use { 'nvim-lua/plenary.nvim'                              }
         use { 'nvim-lualine/lualine.nvim'                          }
@@ -41,7 +41,7 @@ return require('packer').startup({
         use { 'nvim-treesitter/nvim-treesitter-context'            }
         use { 'pbrisbin/vim-colors-off'                            }
         use { 'tpope/vim-fugitive'                                 }
-        use { "zbirenbaum/copilot.lua"                             }
+        use { 'zbirenbaum/copilot.lua'                             }
 
         use {
             'iamcco/markdown-preview.nvim',
