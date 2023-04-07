@@ -12,20 +12,20 @@ onedark.setup({
         strings   = 'none',
         variables = 'none'
     },
-    style = 'warmer',
+    style = 'warm',
     -- self-managed to include also 'off' colorscheme (see below)
     -- toggle_style_key  = '<f5>',
-    -- toggle_style_list = { 'light', 'warmer' },
+    -- toggle_style_list = { 'light', 'warm' },
 })
 
 onedark.load()
 
 local current_style_idx = 1;
-local styles = {
-    { color = 'onedark', background = 'dark',  style = 'warmer' },
-    { color = 'off',     background = 'dark',  style = 'warmer' },
-    { color = 'onedark', background = 'light', style = 'light'  },
-    { color = 'off',     background = 'light', style = 'light'  },
+    local styles = {
+    { color = 'onedark', background = 'dark',  style = 'warm'  },
+    { color = 'off',     background = 'dark',  style = 'warm'  },
+    { color = 'onedark', background = 'light', style = 'light' },
+    { color = 'off',     background = 'light', style = 'light' },
 }
 
 local toggle_colors = function()
