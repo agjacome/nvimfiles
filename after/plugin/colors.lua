@@ -18,24 +18,28 @@ onedark.setup({
     -- toggle_style_list = { 'light', 'warm' },
 })
 
-onedark.load()
-
 local current_style_idx = 1;
-    local styles = {
-    { color = 'onedark', background = 'dark',  style = 'warm'  },
+local styles = {
     { color = 'off',     background = 'dark',  style = 'warm'  },
-    { color = 'onedark', background = 'light', style = 'light' },
+    { color = 'onedark', background = 'dark',  style = 'warm'  },
     { color = 'off',     background = 'light', style = 'light' },
+    { color = 'onedark', background = 'light', style = 'light' },
 }
+
+local set_colors = function(index)
+    local style = styles[index]
+
+    vim.o.background = style.background
+    vim.g.onedark_config.style = style.style
+    vim.cmd.colorscheme(style.color)
+end
 
 local toggle_colors = function()
     current_style_idx = math.fmod(current_style_idx, #styles) + 1
-
-    local style = styles[current_style_idx]
-
-    vim.cmd.colorscheme(style.color)
-    vim.g.onedark_config.style = style.style
-    vim.o.background = style.background
+    set_colors(current_style_idx)
 end
+
+onedark.load()
+set_colors(current_style_idx)
 
 vim.keymap.set('n', '<f5>', toggle_colors, { remap = false, desc = 'Toggle colors' })
