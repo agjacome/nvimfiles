@@ -17,3 +17,16 @@ if neodev_status_ok then
 end
 
 lsp_zero.setup()
+
+local lsp_config = require('lspconfig')
+
+lsp_config.denols.setup {
+  on_attach = on_attach,
+  root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
+}
+
+lsp_config.tsserver.setup {
+  on_attach = on_attach,
+  root_dir = lsp_config.util.root_pattern("package.json"),
+  single_file_support = false
+}
