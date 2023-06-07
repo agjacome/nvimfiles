@@ -40,6 +40,7 @@ return require('packer').startup({
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'nvim-treesitter/nvim-treesitter-context'            }
         use { 'pbrisbin/vim-colors-off'                            }
+        use { 'scalameta/nvim-metals'                              }
         use { 'tpope/vim-fugitive'                                 }
         use { 'zbirenbaum/copilot.lua'                             }
 
