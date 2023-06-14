@@ -16,6 +16,11 @@ nvim_tree.setup({
             }
         }
     },
+    git ={
+        enable = true,
+        ignore = false,
+        timeout = 500
+    },
     renderer = {
         group_empty = true,
         icons = {
@@ -30,7 +35,7 @@ nvim_tree.setup({
     },
     update_focused_file = {
         enable = true
-    }
+    },
 })
 
 vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeFindFileToggle, { desc = 'Toggle NvimTree', remap = false, silent = true })
