@@ -31,6 +31,7 @@ return require('packer').startup({
         use { 'lewis6991/gitsigns.nvim'                            }
         use { 'mbbill/undotree'                                    }
         use { 'mg979/vim-visual-multi'                             }
+        use { 'muniftanjim/prettier.nvim'                          }
         use { 'navarasu/onedark.nvim'                              }
         use { 'norcalli/nvim-colorizer.lua'                        }
         use { 'numtostr/comment.nvim'                              }
@@ -58,6 +59,7 @@ return require('packer').startup({
                 {'neovim/nvim-lspconfig'},
                 {'williamboman/mason.nvim'},
                 {'williamboman/mason-lspconfig.nvim'},
+                {'jose-elias-alvarez/null-ls.nvim'},
 
                 -- Autocompletion
                 {'hrsh7th/nvim-cmp'},
