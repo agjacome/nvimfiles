@@ -12,22 +12,22 @@ lualine.setup({
         theme                = 'onedark',
     },
     tabline = {
-      lualine_a = {
-          {
-              'buffers',
-              mode    = 0,
-              filetype_names = {
-                  NvimTree        = 'NVimTree',
-                  TelescopePrompt = 'Telescope',
-                  fugitive        = 'Fugitive',
-                  packer          = 'Packer',
-              },
-              symbols = {
-                  modified       = '*',
-                  alternate_file = '',
-                  directory      = '',
-              }
-          }
-      },
+        lualine_a = {
+            {
+                'buffers',
+                mode           = 0,
+                filetype_names = {
+                    NvimTree        = 'NVimTree',
+                    TelescopePrompt = 'Telescope',
+                    fugitive        = 'Fugitive',
+                    packer          = 'Packer',
+                },
+                symbols        = {
+                    modified       = '*',
+                    alternate_file = '',
+                    directory      = '',
+                }
+            }
+        },
     },
 })

@@ -20,8 +20,8 @@ onedark.setup({
 
 local current_style_idx = 1;
 local styles = {
-    { color = 'off',     background = 'dark',  style = 'warm'  },
-    { color = 'onedark', background = 'dark',  style = 'warm'  },
+    { color = 'off',     background = 'dark',  style = 'warm' },
+    { color = 'onedark', background = 'dark',  style = 'warm' },
     { color = 'off',     background = 'light', style = 'light' },
     { color = 'onedark', background = 'light', style = 'light' },
 }

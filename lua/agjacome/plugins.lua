@@ -1,13 +1,13 @@
 local bootstrap_packer = function()
-  local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+    local install_path = vim.fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
 
-  if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
-    vim.fn.system({'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path})
-    vim.cmd [[packadd packer.nvim]]
-    return true
-  end
+    if vim.fn.empty(vim.fn.glob(install_path)) > 0 then
+        vim.fn.system({ 'git', 'clone', '--depth', '1', 'https://github.com/wbthomason/packer.nvim', install_path })
+        vim.cmd [[packadd packer.nvim]]
+        return true
+    end
 
-  return false
+    return false
 end
 
 local is_new_packer_install = bootstrap_packer()
@@ -23,28 +23,28 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
-        use { 'folke/neodev.nvim'                                  }
-        use { 'folke/trouble.nvim'                                 }
-        use { 'folke/zen-mode.nvim'                                }
-        use { 'junegunn/vim-easy-align'                            }
-        use { 'justinmk/vim-gtfo'                                  }
-        use { 'lewis6991/gitsigns.nvim'                            }
-        use { 'mbbill/undotree'                                    }
-        use { 'mg979/vim-visual-multi'                             }
-        use { 'muniftanjim/prettier.nvim'                          }
-        use { 'navarasu/onedark.nvim'                              }
-        use { 'norcalli/nvim-colorizer.lua'                        }
-        use { 'numtostr/comment.nvim'                              }
-        use { 'nvim-lua/plenary.nvim'                              }
-        use { 'nvim-lualine/lualine.nvim'                          }
-        use { 'nvim-telescope/telescope.nvim',   tag = '0.1.x'     }
-        use { 'nvim-tree/nvim-tree.lua',         tag = 'nightly'   }
+        use { 'folke/neodev.nvim' }
+        use { 'folke/trouble.nvim' }
+        use { 'folke/zen-mode.nvim' }
+        use { 'junegunn/vim-easy-align' }
+        use { 'justinmk/vim-gtfo' }
+        use { 'lewis6991/gitsigns.nvim' }
+        use { 'mbbill/undotree' }
+        use { 'mg979/vim-visual-multi' }
+        use { 'muniftanjim/prettier.nvim' }
+        use { 'navarasu/onedark.nvim' }
+        use { 'norcalli/nvim-colorizer.lua' }
+        use { 'numtostr/comment.nvim' }
+        use { 'nvim-lua/plenary.nvim' }
+        use { 'nvim-lualine/lualine.nvim' }
+        use { 'nvim-telescope/telescope.nvim', tag = '0.1.x' }
+        use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-        use { 'nvim-treesitter/nvim-treesitter-context'            }
-        use { 'pbrisbin/vim-colors-off'                            }
-        use { 'scalameta/nvim-metals'                              }
-        use { 'tpope/vim-fugitive'                                 }
-        use { 'zbirenbaum/copilot.lua'                             }
+        use { 'nvim-treesitter/nvim-treesitter-context' }
+        use { 'pbrisbin/vim-colors-off' }
+        use { 'scalameta/nvim-metals' }
+        use { 'tpope/vim-fugitive' }
+        use { 'zbirenbaum/copilot.lua' }
 
         use {
             'iamcco/markdown-preview.nvim',
@@ -56,22 +56,22 @@ return require('packer').startup({
             branch = 'v1.x',
             requires = {
                 -- LSP Support
-                {'neovim/nvim-lspconfig'},
-                {'williamboman/mason.nvim'},
-                {'williamboman/mason-lspconfig.nvim'},
-                {'jose-elias-alvarez/null-ls.nvim'},
+                { 'neovim/nvim-lspconfig' },
+                { 'williamboman/mason.nvim' },
+                { 'williamboman/mason-lspconfig.nvim' },
+                { 'jose-elias-alvarez/null-ls.nvim' },
 
                 -- Autocompletion
-                {'hrsh7th/nvim-cmp'},
-                {'hrsh7th/cmp-nvim-lsp'},
-                {'hrsh7th/cmp-buffer'},
-                {'hrsh7th/cmp-path'},
-                {'saadparwaiz1/cmp_luasnip'},
-                {'hrsh7th/cmp-nvim-lua'},
+                { 'hrsh7th/nvim-cmp' },
+                { 'hrsh7th/cmp-nvim-lsp' },
+                { 'hrsh7th/cmp-buffer' },
+                { 'hrsh7th/cmp-path' },
+                { 'saadparwaiz1/cmp_luasnip' },
+                { 'hrsh7th/cmp-nvim-lua' },
 
                 -- Snippets
-                {'L3MON4D3/LuaSnip'},
-                {'rafamadriz/friendly-snippets'},
+                { 'L3MON4D3/LuaSnip' },
+                { 'rafamadriz/friendly-snippets' },
             }
         }
 
@@ -90,4 +90,3 @@ return require('packer').startup({
         }
     }
 })
-

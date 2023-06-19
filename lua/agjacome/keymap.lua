@@ -29,9 +29,9 @@ vim.keymap.set('n', '<s-tab>', ':bprevious<cr>', opts('Move to Previous buffer')
 local quickfix = vim.api.nvim_create_augroup('quickfix', {})
 
 autocmd('BufReadPost', {
-    group    = quickfix,
-    pattern  = 'quickfix',
-    command  = 'nnoremap <buffer> <cr> <cr>'
+    group   = quickfix,
+    pattern = 'quickfix',
+    command = 'nnoremap <buffer> <cr> <cr>'
 })
 
 -- split window
