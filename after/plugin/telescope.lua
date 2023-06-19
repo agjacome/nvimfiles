@@ -17,6 +17,7 @@ local find_files = function()
 end
 
 vim.keymap.set('n', '<C-p>',      telescope.git_files,  opts('Fuzzy-find git files (Telescope)'))
-vim.keymap.set('n', '<leader>p',  find_files, opts('Fuzzy-find workspace files (Telescope)'))
+vim.keymap.set('n', '<leader>p',  find_files,           opts('Fuzzy-find workspace files (Telescope)'))
 vim.keymap.set('n', '<leader>vh', telescope.help_tags,  opts('Fuzzy-find help_tags (Telescope)'))
 vim.keymap.set('n', '<leader>s',  telescope_grep,       opts('Fuzzy-find by content (Telescope)'))
+vim.keymap.set('n', '<leader>k',  telescope.keymaps,    opts('Fuzzy-find keymap (Telescope)'))
