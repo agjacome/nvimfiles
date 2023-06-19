@@ -1,6 +1,8 @@
 vim.g.mapleader      = ','
 vim.g.maplocalleader = ','
 
+local autocmd  = vim.api.nvim_create_autocmd
+
 local opts = function(desc)
     return { desc = desc, remap = false, silent = true }
 end
@@ -23,6 +25,15 @@ vim.keymap.set('n', '<c-l>',   '<c-w>l',         opts('Move to Right window'))
 vim.keymap.set('n', '<tab>',   ':bnext<cr>',     opts('Move to Next buffer'))
 vim.keymap.set('n', '<s-tab>', ':bprevious<cr>', opts('Move to Previous buffer'))
 
+-- quickfix navigation
+local quickfix = vim.api.nvim_create_augroup('quickfix', {})
+
+autocmd('BufReadPost', {
+    group    = quickfix,
+    pattern  = 'quickfix',
+    command  = 'nnoremap <buffer> <cr> <cr>'
+})
+
 -- split window
 vim.keymap.set('n', '<leader>H', ':leftabove vnew<cr>',  opts('Open new Left window'))
 vim.keymap.set('n', '<leader>J', ':leftabove new<cr>',   opts('Open new Down window'))
@@ -40,6 +51,7 @@ end
 
 vim.keymap.set('n', '<cr>', toggle_hlsearch, opts('Toggle search Highlight'))
 vim.keymap.set('n', '<f6>', toggle_relnum,   opts('Toggle Relative line number'))
+
 
 -- expansions
 vim.keymap.set('c', '%%',        '<c-r>=expand("%:p:h") . "/"<cr>',   opts('Expand to current directory'))
