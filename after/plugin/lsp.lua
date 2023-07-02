@@ -76,7 +76,11 @@ lsp_config.tsserver.setup({
 })
 
 -- Null LS configs
-local null_ls = require('null-ls')
+local null_ls_status, null_ls = pcall(require, 'null-ls')
+
+if not null_ls_status then
+    return
+end
 
 null_ls.setup({
     on_attach = function(client, buffer)
