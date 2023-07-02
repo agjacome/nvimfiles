@@ -9,7 +9,7 @@ copilot.setup({
         auto_refresh = false
     },
     suggestion = {
-        auto_trigger = false
+        auto_trigger = true
     }
 })
 
