@@ -62,32 +62,3 @@ cmp.setup({
         ['<C-f>']     = cmp.mapping.scroll_docs(4),
     }
 })
-
--- Server configs
-local lsp_config = require('lspconfig')
-
-lsp_config.denols.setup({
-    root_dir = lsp_config.util.root_pattern("deno.json", "deno.jsonc"),
-})
-
-lsp_config.tsserver.setup({
-    root_dir = lsp_config.util.root_pattern("package.json"),
-    single_file_support = false
-})
-
--- Null LS configs
-local null_ls_status, null_ls = pcall(require, 'null-ls')
-
-if not null_ls_status then
-    return
-end
-
-null_ls.setup({
-    on_attach = function(client, buffer)
-        local options = opts(buffer)
-
-        if client.supports_method("textDocument/formatting") then
-            vim.keymap.set({ 'n', 'x' }, '<F3>', format(buffer), options('Format current buffer (LSP)'))
-        end
-    end
-})
