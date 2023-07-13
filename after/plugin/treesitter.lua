@@ -5,7 +5,6 @@ if not status_ok then
 end
 
 treesitter.setup({
-    ensure_installed = { 'help', 'lua', 'query' },
     sync_install     = true,
     auto_install     = true,
     highlight        = {
