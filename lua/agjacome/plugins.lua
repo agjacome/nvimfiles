@@ -27,7 +27,6 @@ return require('packer').startup({
         use { 'folke/trouble.nvim' }
         use { 'folke/zen-mode.nvim' }
         use { 'junegunn/vim-easy-align' }
-        use { 'justinmk/vim-gtfo' }
         use { 'lewis6991/gitsigns.nvim' }
         use { 'mbbill/undotree' }
         use { 'mg979/vim-visual-multi' }
