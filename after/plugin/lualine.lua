@@ -9,7 +9,7 @@ lualine.setup({
         component_separators = '|',
         icons_enabled        = false,
         section_separators   = '',
-        theme                = 'onedark',
+        theme                = 'gruvbox-material',
     },
     tabline = {
         lualine_a = {

@@ -30,7 +30,6 @@ return require('packer').startup({
         use { 'lewis6991/gitsigns.nvim' }
         use { 'mbbill/undotree' }
         use { 'mg979/vim-visual-multi' }
-        use { 'navarasu/onedark.nvim' }
         use { 'norcalli/nvim-colorizer.lua' }
         use { 'numtostr/comment.nvim' }
         use { 'nvim-lua/plenary.nvim' }
