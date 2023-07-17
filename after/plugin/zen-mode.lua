@@ -20,7 +20,10 @@ zen_mode.setup({
             enabled = true,
             font    = 24,
         },
-        tmux = { enabled = true }
+        tmux = {
+            enabled = true,
+            font    = 24,
+        }
     }
 })
 
