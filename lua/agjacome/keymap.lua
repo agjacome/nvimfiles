@@ -52,7 +52,11 @@ end
 vim.keymap.set('n', '<cr>', toggle_hlsearch, opts('Toggle search Highlight'))
 vim.keymap.set('n', '<f6>', toggle_relnum,   opts('Toggle Relative line number'))
 
-
 -- expansions
 vim.keymap.set('c', '%%',        '<c-r>=expand("%:p:h") . "/"<cr>',   opts('Expand to current directory'))
 vim.keymap.set('n', '<leader>D', '"=strftime("%Y-%m-%d %H:%M")<cr>p', opts('Insert current DateTime'))
+
+-- diagnostics
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts('Show line diagnostics'))
+vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,  opts('Go to previous diagnostic'))
+vim.keymap.set('n', ']d', vim.diagnostic.goto_next,  opts('Go to next diagnostic'))
