@@ -60,3 +60,14 @@ vim.keymap.set('n', '<leader>D', '"=strftime("%Y-%m-%d %H:%M")<cr>p', opts('Inse
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, opts('Show line diagnostics'))
 vim.keymap.set('n', '[d', vim.diagnostic.goto_prev,  opts('Go to previous diagnostic'))
 vim.keymap.set('n', ']d', vim.diagnostic.goto_next,  opts('Go to next diagnostic'))
+
+-- tmux stuff
+local tmux_session = function()
+    if vim.env.TMUX then
+        vim.cmd('!tmux split-window -h "tmux-session"')
+    else
+        print('Not in a tmux session')
+    end
+end
+
+vim.keymap.set('n', '<c-t>', tmux_session, opts('Open tmux session'))
