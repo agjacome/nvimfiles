@@ -26,3 +26,10 @@ autocmd('TextYankPost', {
         })
     end
 })
+
+-- Autorun chezmoi apply
+autocmd('BufWritePost', {
+    group   = group,
+    pattern = vim.env.HOME .. '/.local/share/chezmoi/**',
+    command = [[!chezmoi apply --source-path %]]
+})
