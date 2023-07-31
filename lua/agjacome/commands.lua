@@ -36,5 +36,5 @@ autocmd('BufWritePost', {
 autocmd('BufWritePost', {
     group   = group,
     pattern = vim.env.HOME .. '/.dotfiles/config/**',
-    command = [[!chezmoi apply --source-path %]]
+    command = [[!chezmoi apply]]
 })
