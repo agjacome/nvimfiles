@@ -31,7 +31,7 @@ autocmd('TextYankPost', {
 autocmd('BufWritePost', {
     group   = group,
     pattern = vim.env.HOME .. '/.dotfiles/**.nix',
-    command = [[!home-manager switch]]
+    command = [[!home-manager switch --impure]]
 })
 autocmd('BufWritePost', {
     group   = group,
