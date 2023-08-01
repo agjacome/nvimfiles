@@ -23,6 +23,7 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
+        use { "jackmort/chatgpt.nvim", requires = "muniftanjim/nui.nvim" }
         use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" }
         use { 'folke/neodev.nvim' }
         use { 'folke/trouble.nvim' }
