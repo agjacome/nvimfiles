@@ -23,9 +23,11 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
+        use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" }
         use { 'folke/neodev.nvim' }
         use { 'folke/trouble.nvim' }
         use { 'folke/zen-mode.nvim' }
+        use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
         use { 'junegunn/vim-easy-align' }
         use { 'lewis6991/gitsigns.nvim' }
         use { 'mbbill/undotree' }
@@ -38,15 +40,9 @@ return require('packer').startup({
         use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'nvim-treesitter/nvim-treesitter-context' }
-        use { 'pbrisbin/vim-colors-off' }
         use { 'scalameta/nvim-metals' }
         use { 'tpope/vim-fugitive' }
         use { 'zbirenbaum/copilot.lua' }
-
-        use {
-            'iamcco/markdown-preview.nvim',
-            run = function() vim.fn["mkdp#util#install"]() end
-        }
 
         use {
             'VonHeikemen/lsp-zero.nvim',

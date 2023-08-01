@@ -1,7 +1,15 @@
+vim.g.zenbones = {
+  darkness  = 'stark',
+  lightness = 'dim',
+  italic_comments = false,
+}
+
 local current_style_idx = 1;
 local styles = {
-    { color = 'off', background = 'dark', },
-    { color = 'off', background = 'light' }
+    { color = 'zenbones',    background = 'dark', },
+    { color = 'zenbones',    background = 'light' },
+    { color = 'forestbones', background = 'dark' },
+    { color = 'seoulbones',  background = 'light' },
 }
 
 local set_colors = function(index)
