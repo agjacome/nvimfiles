@@ -36,7 +36,9 @@ return require('packer').startup({
         use { 'numtostr/comment.nvim' }
         use { 'nvim-lua/plenary.nvim' }
         use { 'nvim-lualine/lualine.nvim' }
-        use { 'nvim-telescope/telescope.nvim', tag = '0.1.x' }
+        use { 'nvim-telescope/telescope.nvim' }
+        use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        use { 'nvim-telescope/telescope-media-files.nvim' }
         use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'nvim-treesitter/nvim-treesitter-context' }
