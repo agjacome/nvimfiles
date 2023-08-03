@@ -1,5 +1,4 @@
 vim.g.zenbones = {
-  darkness  = 'stark',
   lightness = 'dim',
   italic_comments = false,
 }
