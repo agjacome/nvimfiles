@@ -7,7 +7,9 @@ local current_style_idx = 1;
 local styles = {
     { color = 'zenbones',    background = 'dark', },
     { color = 'zenbones',    background = 'light' },
-    { color = 'forestbones', background = 'dark' },
+    { color = 'forestbones', background = 'dark'  },
+    { color = 'forestbones', background = 'light' },
+    { color = 'seoulbones',  background = 'dark'  },
     { color = 'seoulbones',  background = 'light' },
 }
 
