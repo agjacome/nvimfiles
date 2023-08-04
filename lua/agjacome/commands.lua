@@ -15,6 +15,15 @@ autocmd('BufWritePre', {
     command = [[%s/\s\+$//e]]
 })
 
+-- Clear command from ruler after 5ms
+autocmd('CmdlineLeave', {
+    group = group,
+    pattern = '*',
+    callback = function()
+        vim.fn.timer_start(500, function() vim.cmd('echon " "') end)
+    end
+})
+
 -- Highlight yanked text
 autocmd('TextYankPost', {
     group    = group,
