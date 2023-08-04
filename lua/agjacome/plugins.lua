@@ -27,7 +27,7 @@ return require('packer').startup({
         use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" }
         use { 'folke/neodev.nvim' }
         use { 'folke/trouble.nvim' }
-        use { 'folke/zen-mode.nvim' }
+        use { 'folke/zen-mode.nvim', requires = 'folke/twilight.nvim' }
         use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
         use { 'junegunn/vim-easy-align' }
         use { 'lewis6991/gitsigns.nvim' }
