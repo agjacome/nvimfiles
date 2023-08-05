@@ -4,6 +4,8 @@ if not status_ok then
     return
 end
 
+local scrolloff_backup = vim.opt.scrolloff
+
 zen_mode.setup({
     window = {
         backdrop = 1,
@@ -27,14 +29,23 @@ zen_mode.setup({
         },
         tmux = { enabled = true },
         twilight = { enabled = false }
-    }
+    },
+
+    on_open = function()
+        local twilight = require('twilight')
+        twilight.setup({ context = 2 })
+        twilight.enable()
+
+        vim.opt.scrolloff = 100;
+    end,
+
+    on_close = function()
+        local twilight = require('twilight')
+        twilight.disable()
+
+        vim.opt.scrolloff = scrolloff_backup
+    end
 })
-
-local twilight_ok, twilight = pcall(require, 'twilight')
-
-if twilight_ok then
-    twilight.setup({ context = 2 })
-end
 
 vim.keymap.set('n', '<leader>z', zen_mode.toggle, { desc = 'Toggle ZenMode', remap = false, silent = true })
 
