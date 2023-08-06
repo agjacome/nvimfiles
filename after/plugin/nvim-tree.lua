@@ -29,8 +29,12 @@ nvim_tree.setup({
                 folder       = false,
                 folder_arrow = true,
                 git          = false,
-                modified     = false
-            }
+                modified     = false,
+            },
+            glyphs = {
+                symlink = ''
+            },
+            symlink_arrow = ' → '
         }
     },
     update_focused_file = {
@@ -38,4 +42,17 @@ nvim_tree.setup({
     },
 })
 
+local open_nvim_tree = function(data)
+    local is_directory = vim.fn.isdirectory(data.file) == 1
+
+    if not is_directory then
+        return
+    end
+
+    vim.cmd.cd(data.file)
+    vim.cmd.NvimTreeOpen()
+end
+
 vim.keymap.set('n', '<leader>f', vim.cmd.NvimTreeFindFileToggle, { desc = 'Toggle NvimTree', remap = false, silent = true })
+
+vim.api.nvim_create_autocmd({ 'VimEnter' }, { callback = open_nvim_tree })
