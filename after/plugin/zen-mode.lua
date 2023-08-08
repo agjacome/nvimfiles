@@ -25,7 +25,7 @@ zen_mode.setup({
         },
         alacritty = {
             enabled = true,
-            font    = "30",
+            font    = 30,
         },
         tmux = { enabled = true },
         twilight = { enabled = false }

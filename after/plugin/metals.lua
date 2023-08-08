@@ -7,13 +7,13 @@ end
 local config = metals.bare_config()
 
 config.settings = {
-    excludedPackages      = { "akka.actor.typed.javadsl", "com.github.swagger.akka.javadsl" },
+    excludedPackages      = { 'akka.actor.typed.javadsl', 'com.github.swagger.akka.javadsl' },
     showImplicitArguments = true,
     showInferredType      = true,
 }
 
-config.init_options.statusBarProvider = "on"
-config.capabilities = require("cmp_nvim_lsp").default_capabilities()
+config.init_options.statusBarProvider = 'on'
+config.capabilities = require('cmp_nvim_lsp').default_capabilities()
 
 local group   = vim.api.nvim_create_augroup('metals', { clear = true })
 local autocmd = vim.api.nvim_create_autocmd

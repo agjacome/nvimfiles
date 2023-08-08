@@ -28,7 +28,7 @@ lsp_zero.on_attach(function(client, buffer)
 
     lsp_zero.default_keymaps(options(''))
 
-    if client.supports_method("textDocument/formatting") then
+    if client.supports_method('textDocument/formatting') then
         vim.keymap.set({ 'n', 'x' }, '<F3>', format(buffer), options('Format current buffer (LSP)'))
     end
 

@@ -6,6 +6,6 @@ vim.api.nvim_create_user_command('ChatGPTEnable', function()
     end
 
     chatgpt.setup({
-        api_key_cmd = "pass keys/api/openai"
+        api_key_cmd = 'pass keys/api/openai'
     })
 end, { })
