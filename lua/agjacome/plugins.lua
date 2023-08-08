@@ -23,12 +23,12 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
-        use { "jackmort/chatgpt.nvim", requires = "muniftanjim/nui.nvim" }
-        use { "mcchrish/zenbones.nvim", requires = "rktjmp/lush.nvim" }
+        use { 'jackmort/chatgpt.nvim', requires = 'muniftanjim/nui.nvim' }
+        use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
         use { 'folke/neodev.nvim' }
         use { 'folke/trouble.nvim' }
         use { 'folke/zen-mode.nvim', requires = 'folke/twilight.nvim' }
-        use { 'iamcco/markdown-preview.nvim', run = function() vim.fn["mkdp#util#install"]() end }
+        use { 'iamcco/markdown-preview.nvim', run = function() vim.fn['mkdp#util#install']() end }
         use { 'junegunn/vim-easy-align' }
         use { 'lewis6991/gitsigns.nvim' }
         use { 'mbbill/undotree' }
@@ -37,13 +37,14 @@ return require('packer').startup({
         use { 'numtostr/comment.nvim' }
         use { 'nvim-lua/plenary.nvim' }
         use { 'nvim-lualine/lualine.nvim' }
-        use { 'nvim-telescope/telescope.nvim' }
         use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
         use { 'nvim-telescope/telescope-media-files.nvim' }
+        use { 'nvim-telescope/telescope.nvim' }
         use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'nvim-treesitter/nvim-treesitter-context' }
         use { 'scalameta/nvim-metals' }
+        use { 'theprimeagen/git-worktree.nvim' }
         use { 'tpope/vim-fugitive' }
         use { 'zbirenbaum/copilot.lua' }
 
