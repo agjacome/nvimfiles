@@ -64,7 +64,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next,  opts('Go to next diagnostic
 -- tmux stuff
 local tmux_session = function()
     if vim.env.TMUX then
-        vim.cmd('!tmux split-window -h "tmux-session"')
+        vim.cmd('silent !tmux split-window -h "tmux-session"')
     else
         print('Not in a tmux session')
     end
