@@ -15,14 +15,15 @@ lualine.setup({
         lualine_a = {
             {
                 'buffers',
-                mode           = 0,
+                mode               = 0,
+                show_filename_only = false,
                 filetype_names = {
                     NvimTree        = 'NVimTree',
                     TelescopePrompt = 'Telescope',
                     fugitive        = 'Fugitive',
                     packer          = 'Packer',
                 },
-                symbols        = {
+                symbols = {
                     modified       = '*',
                     alternate_file = '',
                     directory      = '',
