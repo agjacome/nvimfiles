@@ -12,7 +12,7 @@ autocmd('BufReadPost', {
 autocmd('BufWritePre', {
     group   = group,
     pattern = '*',
-    command = [[%s/\s\+$//e]]
+    command = [[if &filetype !~# 'markdown\|text' | silent! %s/\s\+$//e | endif]]
 })
 
 -- Clear command from ruler after 5ms
