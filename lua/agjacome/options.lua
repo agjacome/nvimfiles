@@ -10,6 +10,7 @@ vim.opt.completeopt    = 'longest,menu'
 vim.opt.diffopt        = 'filler'
 vim.opt.directory      = '/tmp'
 vim.opt.expandtab      = true
+vim.opt.exrc           = true
 vim.opt.fillchars      = vim.o.fillchars .. 'vert:│'
 vim.opt.foldenable     = false
 vim.opt.foldmethod     = 'manual'
