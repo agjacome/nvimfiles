@@ -4,9 +4,10 @@ if not status_ok then
     return
 end
 
+telescope.load_extension('dap')
 telescope.load_extension('fzf')
-telescope.load_extension('media_files')
 telescope.load_extension('git_worktree')
+telescope.load_extension('media_files')
 
 local opts = function(desc)
     return { desc = desc, remap = false, silent = true }
@@ -37,8 +38,8 @@ local worktrees = function()
 end
 
 vim.keymap.set('n', '<C-p>',     builtin.git_files,  opts('Fuzzy-find git files (Telescope)'))
-vim.keymap.set('n', '<leader>p', find_files,           opts('Fuzzy-find workspace files (Telescope)'))
-vim.keymap.set('n', '<leader>s', telescope_grep,       opts('Fuzzy-find by content (Telescope)'))
+vim.keymap.set('n', '<leader>p', find_files,         opts('Fuzzy-find workspace files (Telescope)'))
+vim.keymap.set('n', '<leader>s', telescope_grep,     opts('Fuzzy-find by content (Telescope)'))
 vim.keymap.set('n', '<leader>l', builtin.treesitter, opts('Fuzzy-find keymap (Telescope)'))
 
 vim.keymap.set('n', '<leader>h', builtin.help_tags, opts('Fuzzy-find help_tags (Telescope)'))
