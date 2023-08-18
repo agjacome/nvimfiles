@@ -12,6 +12,7 @@ vim.opt.directory      = '/tmp'
 vim.opt.expandtab      = true
 vim.opt.exrc           = true
 vim.opt.fillchars      = vim.o.fillchars .. 'vert:│'
+vim.opt.fixendofline   = true
 vim.opt.foldenable     = false
 vim.opt.foldmethod     = 'manual'
 vim.opt.formatoptions  = vim.o.formatoptions .. 'j'
