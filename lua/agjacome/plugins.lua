@@ -47,7 +47,6 @@ return require('packer').startup({
         use { 'nvim-treesitter/nvim-treesitter-context' }
         use { 'scalameta/nvim-metals' }
         use { 'thehamsta/nvim-dap-virtual-text' }
-        use { 'theprimeagen/git-worktree.nvim' }
         use { 'tpope/vim-fugitive' }
         use { 'zbirenbaum/copilot.lua' }
 
