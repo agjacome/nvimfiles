@@ -45,6 +45,9 @@ vim.keymap.set('n', '<leader>p', find_files,         opts('Fuzzy-find workspace 
 vim.keymap.set('n', '<leader>s', builtin.live_grep,  opts('Fuzzy-find by content (Telescope)'))
 vim.keymap.set('n', '<leader>l', builtin.treesitter, opts('Fuzzy-find keymap (Telescope)'))
 
+vim.keymap.set('n', '<leader>bb', builtin.buffers,                    opts('Fuzzy-find buffers (Telescope)'))
+vim.keymap.set('n', '<leader>bs', builtin.current_buffer_fuzzy_find,  opts('Fuzzy-find current buffer (Telescope)'))
+
 vim.keymap.set('n', '<leader>h', builtin.help_tags, opts('Fuzzy-find help_tags (Telescope)'))
 vim.keymap.set('n', '<leader>k', builtin.keymaps,   opts('Fuzzy-find keymap (Telescope)'))
 
