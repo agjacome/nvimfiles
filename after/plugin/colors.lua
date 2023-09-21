@@ -9,8 +9,6 @@ local styles = {
     { color = 'zenbones',    background = 'light' },
     { color = 'forestbones', background = 'dark'  },
     { color = 'forestbones', background = 'light' },
-    { color = 'seoulbones',  background = 'dark'  },
-    { color = 'seoulbones',  background = 'light' },
 }
 
 local set_colors = function(index)
