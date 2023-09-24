@@ -8,8 +8,11 @@ telescope.load_extension('dap')
 telescope.load_extension('fzf')
 telescope.load_extension('media_files')
 
+local actions = require('telescope.actions')
+
 telescope.setup({
     defaults = {
+        path_display = { 'smart' },
         vimgrep_arguments = {
             'rg',
             '--color=never',
@@ -19,6 +22,12 @@ telescope.setup({
             '--column',
             '--smart-case',
             '--hidden',
+        },
+        mappings = {
+            i = {
+                ['<C-j>'] = actions.cycle_history_next,
+                ['<C-k>'] = actions.cycle_history_prev,
+            }
         },
     }
 })
