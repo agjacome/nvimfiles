@@ -19,3 +19,10 @@ local text_status_ok, dap_text = pcall(require, 'nvim-dap-virtual-text')
 if text_status_ok then
     dap_text.setup({})
 end
+
+local telescope_status_ok, telescope = pcall(require, 'telescope')
+
+if telescope_status_ok then
+    vim.keymap.set('n', '<leader>dv', telescope.extensions.dap.variables,        opts('List variables (DAP Telescope)'))
+    vim.keymap.set('n', '<leader>dl', telescope.extensions.dap.list_breakpoints, opts('List breakpoints (DAP Telescope)'))
+end
