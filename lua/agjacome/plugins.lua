@@ -27,7 +27,6 @@ return require('packer').startup({
         use { 'folke/trouble.nvim' }
         use { 'folke/zen-mode.nvim', requires = 'folke/twilight.nvim' }
         use { 'iamcco/markdown-preview.nvim', run = function() vim.fn['mkdp#util#install']() end }
-        use { 'jackmort/chatgpt.nvim', requires = 'muniftanjim/nui.nvim' }
         use { 'junegunn/vim-easy-align' }
         use { 'lewis6991/gitsigns.nvim' }
         use { 'mbbill/undotree' }
