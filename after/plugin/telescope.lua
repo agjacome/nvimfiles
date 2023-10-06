@@ -27,6 +27,8 @@ telescope.setup({
             i = {
                 ['<C-j>'] = actions.cycle_history_next,
                 ['<C-k>'] = actions.cycle_history_prev,
+                ['<C-s>'] = actions.cycle_previewers_next,
+                ['<C-r>'] = actions.cycle_previewers_prev,
             }
         },
     }
@@ -52,3 +54,6 @@ vim.keymap.set('n', '<leader>l', builtin.treesitter, opts('Fuzzy-find by syntax 
 
 vim.keymap.set('n', '<leader>bb', builtin.buffers,                    opts('Fuzzy-find buffers (Telescope)'))
 vim.keymap.set('n', '<leader>bs', builtin.current_buffer_fuzzy_find,  opts('Fuzzy-find current buffer (Telescope)'))
+
+vim.keymap.set('n', '<leader>gb', builtin.git_bcommits,       opts('Git blame (Telescope)'))
+vim.keymap.set('n', '<leader>gr', builtin.git_bcommits_range, opts('Git blame range (Telescope)'))

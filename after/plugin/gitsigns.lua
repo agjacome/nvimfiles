@@ -10,8 +10,7 @@ gitsigns.setup({
             return { buffer = buffer, desc = desc, remap = false, silent = true }
         end
 
-        vim.keymap.set('n', '<leader>gg', gitsigns.toggle_signs,                               opts('Toggle GitSigns'))
-        vim.keymap.set('n', '<leader>gb', function() gitsigns.blame_line({ full = true }) end, opts('Display git blame (GitSigns)'))
-        vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk,                               opts('Display git hunk preview (GitSigns)'))
+        vim.keymap.set('n', '<leader>gg', gitsigns.toggle_signs, opts('Toggle GitSigns'))
+        vim.keymap.set('n', '<leader>gp', gitsigns.preview_hunk, opts('Display git hunk preview (GitSigns)'))
     end
 })
