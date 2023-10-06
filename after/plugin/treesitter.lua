@@ -5,15 +5,30 @@ if not status_ok then
 end
 
 treesitter.setup({
-    sync_install     = true,
-    auto_install     = true,
-    highlight        = {
-        enable                            = true,
+    sync_install = true,
+    auto_install = true,
+    highlight = {
+        enable = true,
         additional_vim_regex_highlighting = false
     },
-    indent           = {
-        enable = true
-    }
+    indent = { enable = true },
+    ensure_installed = {
+        'gitignore',
+        'json',
+        'lua',
+        'markdown',
+        'vim',
+        'yaml',
+    },
+    incremental_selection = {
+        enable = true,
+        keymaps = {
+            init_selection = '<C-space>',
+            node_incremental = '<C-space>',
+            scope_incremental = false,
+            node_decremental = '<bs>',
+        },
+    },
 })
 
 local context_status_ok, context = pcall(require, 'treesitter-context')
