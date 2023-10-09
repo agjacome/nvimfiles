@@ -1,11 +1,13 @@
-vim.g.mapleader      = ','
-vim.g.maplocalleader = ','
-
-local autocmd  = vim.api.nvim_create_autocmd
-
 local opts = function(desc)
     return { desc = desc, remap = false, silent = true }
 end
+
+local autocmd  = vim.api.nvim_create_autocmd
+
+vim.keymap.set('n', "'", ',', { desc = 'Repeat last f, t, F or T command', remap = false, silent = true })
+
+vim.g.mapleader      = ','
+vim.g.maplocalleader = ','
 
 -- disable stuff
 vim.keymap.set('n', 'q:',      '<nop>', opts('Disabled'))

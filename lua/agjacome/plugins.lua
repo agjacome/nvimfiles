@@ -44,6 +44,7 @@ return require('packer').startup({
         use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'nvim-treesitter/nvim-treesitter-context' }
+        use { 'nvim-treesitter/nvim-treesitter-textobjects' }
         use { 'scalameta/nvim-metals' }
         use { 'thehamsta/nvim-dap-virtual-text' }
         use { 'theprimeagen/harpoon' }
