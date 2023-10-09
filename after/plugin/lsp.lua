@@ -35,7 +35,12 @@ lsp_zero.on_attach(function(client, buffer)
     vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>',      options('Go to definition (LSP)'))
     vim.keymap.set('n', 'gD', '<cmd>Telescope lsp_type_definitions<cr>', options('Go to type definition (LSP)'))
     vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>',  options('Go to implementation (LSP)'))
-    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>',       options('Find references (LSP)'))
+    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>',       options('Go to references (LSP)'))
+    vim.keymap.set('n', 'gI', '<cmd>Telescope lsp_incoming_calls<cr>',   options('Go to incoming calls (LSP)'))
+    vim.keymap.set('n', 'gO', '<cmd>Telescope lsp_outgoing_calls<cr>',   options('Go to outgoing calls (LSP)'))
+
+    vim.keymap.set('n', '<leader>l', '<cmd>Telescope lsp_document_symbols<cr>', options('List symbols (LSP)'))
+    vim.keymap.set('n', '<leader>L', '<cmd>Telescope lsp_workspace_symbols<cr>', options('List workspace symbols (LSP)'))
 end)
 
 local neodev_status_ok, neodev = pcall(require, 'neodev')
