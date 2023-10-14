@@ -12,7 +12,7 @@ local actions = require('telescope.actions')
 
 telescope.setup({
     defaults = {
-        path_display = { 'smart' },
+        path_display = { 'shorten' },
         vimgrep_arguments = {
             'rg',
             '--color=never',
