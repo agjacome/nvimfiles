@@ -4,7 +4,7 @@ end
 
 local autocmd  = vim.api.nvim_create_autocmd
 
-vim.keymap.set('n', "'", ',', { desc = 'Repeat last f, t, F or T command', remap = false, silent = true })
+vim.keymap.set('n', ";", ',', { desc = 'Repeat last f, t, F or T command', remap = false, silent = true })
 
 vim.g.mapleader      = ','
 vim.g.maplocalleader = ','
