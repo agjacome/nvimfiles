@@ -25,7 +25,6 @@ return require('packer').startup({
 
         use { 'folke/neodev.nvim' }
         use { 'folke/trouble.nvim' }
-        use { 'folke/zen-mode.nvim', requires = 'folke/twilight.nvim' }
         use { 'iamcco/markdown-preview.nvim', run = function() vim.fn['mkdp#util#install']() end }
         use { 'junegunn/vim-easy-align' }
         use { 'lewis6991/gitsigns.nvim' }
@@ -39,13 +38,11 @@ return require('packer').startup({
         use { 'nvim-lualine/lualine.nvim' }
         use { 'nvim-telescope/telescope-dap.nvim' }
         use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-        use { 'nvim-telescope/telescope-media-files.nvim' }
         use { 'nvim-telescope/telescope.nvim' }
         use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
         use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
         use { 'nvim-treesitter/nvim-treesitter-context' }
         use { 'nvim-treesitter/nvim-treesitter-textobjects' }
-        use { 'scalameta/nvim-metals' }
         use { 'thehamsta/nvim-dap-virtual-text' }
         use { 'theprimeagen/harpoon' }
         use { 'tpope/vim-fugitive' }
