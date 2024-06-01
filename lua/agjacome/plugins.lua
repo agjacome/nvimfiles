@@ -33,7 +33,6 @@ return require('packer').startup({
         use { 'mfussenegger/nvim-dap' }
         use { 'mg979/vim-visual-multi' }
         use { 'norcalli/nvim-colorizer.lua' }
-        use { 'numtostr/comment.nvim' }
         use { 'nvim-lua/plenary.nvim' }
         use { 'nvim-lualine/lualine.nvim' }
         use { 'nvim-telescope/telescope-dap.nvim' }
