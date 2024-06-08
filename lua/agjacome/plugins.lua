@@ -24,7 +24,7 @@ return require('packer').startup({
         use { 'wbthomason/packer.nvim' }
 
         use { 'folke/neodev.nvim' }
-        use { 'folke/trouble.nvim' }
+        use { 'folke/trouble.nvim', commit = 'a8264a6' }
         use { 'iamcco/markdown-preview.nvim', run = function() vim.fn['mkdp#util#install']() end }
         use { 'junegunn/vim-easy-align' }
         use { 'lewis6991/gitsigns.nvim' }
