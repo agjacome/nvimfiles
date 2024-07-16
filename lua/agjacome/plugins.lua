@@ -45,7 +45,6 @@ return require('packer').startup({
         use { 'thehamsta/nvim-dap-virtual-text' }
         use { 'theprimeagen/harpoon' }
         use { 'tpope/vim-fugitive' }
-        use { 'zbirenbaum/copilot.lua' }
 
         use {
             'VonHeikemen/lsp-zero.nvim',
