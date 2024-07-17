@@ -110,6 +110,7 @@ local context_status_ok, context = pcall(require, 'treesitter-context')
 
 if context_status_ok then
     vim.keymap.set('n', '<leader>c', context.toggle, { desc = 'Toggle context (TreeSitter)', remap = false, silent = true })
+    vim.keymap.set('n', '[c', function() context.go_to_context(vim.v.count1) end, { desc = 'Previous context (TreeSitter)', remap = false, silent = true })
 end
 
 local repeat_status_ok, repeat_move = pcall(require, 'nvim-treesitter.textobjects.repeatable_move')
