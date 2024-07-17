@@ -8,6 +8,26 @@ telescope.load_extension('dap')
 telescope.load_extension('fzf')
 
 local actions = require('telescope.actions')
+local mappings = {
+    i = {
+        ['<C-j>'] = actions.cycle_history_next,
+        ['<C-k>'] = actions.cycle_history_prev,
+        ['<C-s>'] = actions.cycle_previewers_next,
+        ['<C-r>'] = actions.cycle_previewers_prev,
+    },
+    n = { }
+}
+
+local trouble_ok, _ = pcall(require, 'trouble')
+if trouble_ok then
+    local trouble = require('trouble.sources.telescope')
+
+    mappings['i']['<C-t>'] = trouble.open
+    mappings['n']['<C-t>'] = trouble.open
+
+    mappings['i']['<C-T>'] = trouble.add
+    mappings['n']['<C-T>'] = trouble.add
+end
 
 telescope.setup({
     defaults = {
@@ -22,14 +42,7 @@ telescope.setup({
             '--smart-case',
             '--hidden',
         },
-        mappings = {
-            i = {
-                ['<C-j>'] = actions.cycle_history_next,
-                ['<C-k>'] = actions.cycle_history_prev,
-                ['<C-s>'] = actions.cycle_previewers_next,
-                ['<C-r>'] = actions.cycle_previewers_prev,
-            }
-        },
+        mappings = mappings,
     }
 })
 
