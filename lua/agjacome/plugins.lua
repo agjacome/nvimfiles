@@ -23,7 +23,26 @@ return require('packer').startup({
     function(use)
         use { 'wbthomason/packer.nvim' }
 
-        use { 'folke/neodev.nvim' }
+        -- TreeSitter
+        use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
+        use { 'nvim-treesitter/nvim-treesitter-context' }
+        use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+
+        -- LSP
+        use { 'neovim/nvim-lspconfig' }
+        use { 'williamboman/mason.nvim' }
+        use { 'williamboman/mason-lspconfig.nvim' }
+        use { 'hrsh7th/nvim-cmp' }
+        use { 'hrsh7th/cmp-nvim-lsp' }
+        use { 'l3mon4d3/luasnip' }
+        use { 'saadparwaiz1/cmp_luasnip' }
+
+        -- Telescope
+        use { 'nvim-telescope/telescope-dap.nvim' }
+        use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
+        use { 'nvim-telescope/telescope.nvim' }
+
+        -- Others
         use { 'folke/trouble.nvim' }
         use { 'iamcco/markdown-preview.nvim', run = function() vim.fn['mkdp#util#install']() end }
         use { 'junegunn/vim-easy-align' }
@@ -35,33 +54,10 @@ return require('packer').startup({
         use { 'norcalli/nvim-colorizer.lua' }
         use { 'nvim-lua/plenary.nvim' }
         use { 'nvim-lualine/lualine.nvim' }
-        use { 'nvim-telescope/telescope-dap.nvim' }
-        use { 'nvim-telescope/telescope-fzf-native.nvim', run = 'make' }
-        use { 'nvim-telescope/telescope.nvim' }
-        use { 'nvim-tree/nvim-tree.lua', tag = 'nightly' }
-        use { 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-        use { 'nvim-treesitter/nvim-treesitter-context' }
-        use { 'nvim-treesitter/nvim-treesitter-textobjects' }
+        use { 'nvim-tree/nvim-tree.lua' }
         use { 'thehamsta/nvim-dap-virtual-text' }
         use { 'theprimeagen/harpoon' }
         use { 'tpope/vim-fugitive' }
-
-        use {
-            'VonHeikemen/lsp-zero.nvim',
-            branch = 'v1.x',
-            requires = {
-                { 'hrsh7th/cmp-buffer' },
-                { 'hrsh7th/cmp-nvim-lsp' },
-                { 'hrsh7th/cmp-nvim-lua' },
-                { 'hrsh7th/cmp-path' },
-                { 'hrsh7th/nvim-cmp' },
-                { 'l3mon4d3/luasnip' },
-                { 'neovim/nvim-lspconfig' },
-                { 'saadparwaiz1/cmp_luasnip' },
-                { 'williamboman/mason-lspconfig.nvim' },
-                { 'williamboman/mason.nvim' },
-            }
-        }
 
         if is_new_packer_install then
             require('packer').sync()

@@ -1,69 +1,55 @@
-local lsp_status_ok, lsp_zero = pcall(require, 'lsp-zero')
+vim.api.nvim_create_autocmd('LspAttach', {
+    desc = 'LSP Actions',
+    callback = function(event)
+        local options = function(desc)
+            return { buffer = event.buffer, silent = true, desc = desc }
+        end
 
-if not lsp_status_ok then
-    return
-end
+        vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>', options('Go to definition (LSP)'))
+        vim.keymap.set('n', 'gD', '<cmd>Telescope lsp_type_definitions<cr>', options('Go to type definition (LSP)'))
+        vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>', options('Go to implementation (LSP)'))
+        vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>', options('Go to references (LSP)'))
+        vim.keymap.set('n', 'gI', '<cmd>Telescope lsp_incoming_calls<cr>', options('Go to incoming calls (LSP)'))
+        vim.keymap.set('n', 'gO', '<cmd>Telescope lsp_outgoing_calls<cr>', options('Go to outgoing calls (LSP)'))
 
-lsp_zero.preset({
-    name                = 'recommended',
-    set_lsp_keymaps     = true,
-    manage_nvim_cmp     = true,
-    suggest_lsp_servers = false,
+        vim.keymap.set('n', '<leader>l', '<cmd>Telescope lsp_document_symbols<cr>', options('List symbols (LSP)'))
+        vim.keymap.set('n', '<leader>L', '<cmd>Telescope lsp_workspace_symbols<cr>', options('List workspace symbols (LSP)'))
+
+        vim.keymap.set({ 'n', 'x' }, '<F3>', vim.lsp.buf.format, options('Format current buffer (LSP)'))
+    end
 })
 
-local opts = function(buffer)
-    return function(desc)
-        return { buffer = buffer, silent = true, desc = desc }
-    end
+local mason = require('mason')
+mason.setup({})
+
+local default_capabilities = function(server)
+  require('lspconfig')[server].setup({
+    capabilities = require('cmp_nvim_lsp').default_capabilities()
+  })
 end
 
-local format = function(buffer)
-    return function()
-        vim.lsp.buf.format({ async = true, bufnr = buffer })
-    end
-end
+require('mason-lspconfig').setup({
+    ensure_installed = {},
+    handlers = { default_capabilities }
+})
 
-lsp_zero.on_attach(function(client, buffer)
-    local options = opts(buffer)
-
-    lsp_zero.default_keymaps(options(''))
-
-    if client.supports_method('textDocument/formatting') then
-        vim.keymap.set({ 'n', 'x' }, '<F3>', format(buffer), options('Format current buffer (LSP)'))
-    end
-
-    vim.keymap.set('n', 'gd', '<cmd>Telescope lsp_definitions<cr>',      options('Go to definition (LSP)'))
-    vim.keymap.set('n', 'gD', '<cmd>Telescope lsp_type_definitions<cr>', options('Go to type definition (LSP)'))
-    vim.keymap.set('n', 'gi', '<cmd>Telescope lsp_implementations<cr>',  options('Go to implementation (LSP)'))
-    vim.keymap.set('n', 'gr', '<cmd>Telescope lsp_references<cr>',       options('Go to references (LSP)'))
-    vim.keymap.set('n', 'gI', '<cmd>Telescope lsp_incoming_calls<cr>',   options('Go to incoming calls (LSP)'))
-    vim.keymap.set('n', 'gO', '<cmd>Telescope lsp_outgoing_calls<cr>',   options('Go to outgoing calls (LSP)'))
-
-    vim.keymap.set('n', '<leader>l', '<cmd>Telescope lsp_document_symbols<cr>', options('List symbols (LSP)'))
-    vim.keymap.set('n', '<leader>L', '<cmd>Telescope lsp_workspace_symbols<cr>', options('List workspace symbols (LSP)'))
-end)
-
-local neodev_status_ok, neodev = pcall(require, 'neodev')
-if neodev_status_ok then
-    neodev.setup()
-end
-
-lsp_zero.setup()
-
-local cmp        = require('cmp')
-local cmp_action = lsp_zero.cmp_action()
-
+local cmp = require('cmp')
 cmp.setup({
-    sources = {
-        { name = 'nvim_lsp' },
-        { name = 'luasnip' },
+    snippet = {
+        expand = function(args)
+          require('luasnip').lsp_expand(args.body)
+        end
     },
-    mapping = {
+    mapping = cmp.mapping.preset.insert({
         ['<CR>']      = cmp.mapping.confirm({ select = false }),
         ['<C-Space>'] = cmp.mapping.complete(),
-        ['<C-j>']     = cmp_action.luasnip_jump_forward(),
-        ['<C-k>']     = cmp_action.luasnip_jump_backward(),
         ['<C-b>']     = cmp.mapping.scroll_docs(-4),
         ['<C-f>']     = cmp.mapping.scroll_docs(4),
-    }
+    }),
+    sources = cmp.config.sources({
+        { name = 'nvim_lsp' },
+        { name = 'luasnip' }
+    }, {
+        { name = 'buffer' },
+    }),
 })
