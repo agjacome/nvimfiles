@@ -36,6 +36,7 @@ return require('packer').startup({
         use { 'hrsh7th/cmp-nvim-lsp' }
         use { 'l3mon4d3/luasnip' }
         use { 'saadparwaiz1/cmp_luasnip' }
+        use { 'folke/neodev.nvim' }
 
         -- Telescope
         use { 'nvim-telescope/telescope-dap.nvim' }
