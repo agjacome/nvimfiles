@@ -24,10 +24,7 @@ vim.keymap.set('n', '<leader>7', function() ui.nav_file(7) end, { desc = 'Naviga
 vim.keymap.set('n', '<leader>8', function() ui.nav_file(8) end, { desc = 'Navigate to file 8 (Harpoon)', remap = false, silent = true })
 vim.keymap.set('n', '<leader>9', function() ui.nav_file(9) end, { desc = 'Navigate to file 9 (Harpoon)', remap = false, silent = true })
 
-local telescope_status_ok, telescope = pcall(require, 'telescope')
+local telescope = require('telescope')
+telescope.load_extension('harpoon')
 
-if telescope_status_ok then
-    telescope.load_extension('harpoon')
-
-    vim.keymap.set('n', '<leader>hf', telescope.extensions.harpoon.marks, { desc = 'Fuzzy-find marks (Telescope)', remap = false, silent = true })
-end
+vim.keymap.set('n', '<leader>hf', telescope.extensions.harpoon.marks, { desc = 'Fuzzy-find marks (Telescope)', remap = false, silent = true })

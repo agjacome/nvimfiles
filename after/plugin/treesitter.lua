@@ -1,8 +1,4 @@
-local status_ok, treesitter = pcall(require, 'nvim-treesitter.configs')
-
-if not status_ok then
-    return
-end
+local treesitter = require('nvim-treesitter.configs')
 
 -- textobjects config "inspired" by:
 -- https://www.josean.com/posts/nvim-treesitter-and-textobjects
@@ -108,21 +104,14 @@ treesitter.setup({
     }
 })
 
-local context_status_ok, context = pcall(require, 'treesitter-context')
+local repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
+vim.keymap.set({ "n", "x", "o" }, ";", repeat_move.repeat_last_move,          { desc = 'Repeat last move (TreeSitter)', remap = false, silent = true })
+vim.keymap.set({ "n", "x", "o" }, "'", repeat_move.repeat_last_move_opposite, { desc = 'Repeat last move opposite (TreeSitter)', remap = false, silent = true })
+vim.keymap.set({ "n", "x", "o" }, "f", repeat_move.builtin_f_expr, { desc = 'Find forward (TreeSitter)', remap = false, silent = true })
+vim.keymap.set({ "n", "x", "o" }, "F", repeat_move.builtin_F_expr, { desc = 'Find backward (TreeSitter)', remap = false, silent = true })
+vim.keymap.set({ "n", "x", "o" }, "t", repeat_move.builtin_t_expr, { desc = 'Till forward (TreeSitter)', remap = false, silent = true })
+vim.keymap.set({ "n", "x", "o" }, "T", repeat_move.builtin_T_expr, { desc = 'Till backward (TreeSitter)', remap = false, silent = true })
 
-if context_status_ok then
-    vim.keymap.set('n', '<leader>c', context.toggle, { desc = 'Toggle context (TreeSitter)', remap = false, silent = true })
-    vim.keymap.set('n', '[c', function() context.go_to_context(vim.v.count1) end, { desc = 'Previous context (TreeSitter)', remap = false, silent = true })
-end
-
-local repeat_status_ok, repeat_move = pcall(require, 'nvim-treesitter.textobjects.repeatable_move')
-
-if repeat_status_ok then
-    vim.keymap.set({ "n", "x", "o" }, ";", repeat_move.repeat_last_move,          { desc = 'Repeat last move (TreeSitter)', remap = false, silent = true })
-    vim.keymap.set({ "n", "x", "o" }, "'", repeat_move.repeat_last_move_opposite, { desc = 'Repeat last move opposite (TreeSitter)', remap = false, silent = true })
-
-    vim.keymap.set({ "n", "x", "o" }, "f", repeat_move.builtin_f_expr, { desc = 'Find forward (TreeSitter)', remap = false, silent = true })
-    vim.keymap.set({ "n", "x", "o" }, "F", repeat_move.builtin_F_expr, { desc = 'Find backward (TreeSitter)', remap = false, silent = true })
-    vim.keymap.set({ "n", "x", "o" }, "t", repeat_move.builtin_t_expr, { desc = 'Till forward (TreeSitter)', remap = false, silent = true })
-    vim.keymap.set({ "n", "x", "o" }, "T", repeat_move.builtin_T_expr, { desc = 'Till backward (TreeSitter)', remap = false, silent = true })
-end
+local context = require('treesitter-context')
+vim.keymap.set('n', '<leader>c', context.toggle, { desc = 'Toggle context (TreeSitter)', remap = false, silent = true })
+vim.keymap.set('n', '[c', function() context.go_to_context(vim.v.count1) end, { desc = 'Previous context (TreeSitter)', remap = false, silent = true })

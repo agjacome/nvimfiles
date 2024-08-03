@@ -21,11 +21,9 @@ vim.api.nvim_create_autocmd('BufWinEnter', {
         vim.keymap.set('n', '<leader>P', git_push, opts('Git push (Fugitive)'))
         vim.keymap.set('n', '<leader>p', git_pull, opts('Git pull (Fugitive)'))
 
-        local status_ok, telescope = pcall(require, 'telescope.builtin')
-        if status_ok then
-            vim.keymap.set('n', '<leader>gb',  telescope.git_branches, opts('Show Git branches (Telescope)'))
-            vim.keymap.set('n', '<leader>gc',  telescope.git_commits,  opts('Show Git commits (Telescope)'))
-            vim.keymap.set('n', '<leader>gst', telescope.git_stash,    opts('Show Git stashes (Telescope)'))
-        end
+        local telescope = require('telescope.builtin')
+        vim.keymap.set('n', '<leader>gb',  telescope.git_branches, opts('Show Git branches (Telescope)'))
+        vim.keymap.set('n', '<leader>gc',  telescope.git_commits,  opts('Show Git commits (Telescope)'))
+        vim.keymap.set('n', '<leader>gst', telescope.git_stash,    opts('Show Git stashes (Telescope)'))
     end
 })
