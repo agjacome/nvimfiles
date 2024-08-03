@@ -52,7 +52,6 @@ return require('packer').startup({
         use { 'mcchrish/zenbones.nvim', requires = 'rktjmp/lush.nvim' }
         use { 'mfussenegger/nvim-dap' }
         use { 'mg979/vim-visual-multi' }
-        use { 'norcalli/nvim-colorizer.lua' }
         use { 'nvim-lua/plenary.nvim' }
         use { 'nvim-lualine/lualine.nvim' }
         use { 'nvim-tree/nvim-tree.lua' }
