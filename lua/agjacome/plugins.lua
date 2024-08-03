@@ -54,7 +54,6 @@ return require('packer').startup({
         use { 'mg979/vim-visual-multi' }
         use { 'nvim-lua/plenary.nvim' }
         use { 'nvim-lualine/lualine.nvim' }
-        use { 'nvim-tree/nvim-tree.lua' }
         use { 'thehamsta/nvim-dap-virtual-text' }
         use { 'theprimeagen/harpoon' }
         use { 'tpope/vim-fugitive' }
