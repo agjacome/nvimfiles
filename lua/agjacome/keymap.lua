@@ -2,12 +2,9 @@ local opts = function(desc)
     return { desc = desc, remap = false, silent = true }
 end
 
-local autocmd  = vim.api.nvim_create_autocmd
-
 vim.g.mapleader      = ','
 vim.g.maplocalleader = ','
 vim.keymap.set('n', ",,", ',', { desc = 'Repeat last f, t, F or T command', remap = false, silent = true })
-
 
 -- disable stuff
 vim.keymap.set('n', 'q:',      '<nop>', opts('Disabled'))
@@ -28,10 +25,8 @@ vim.keymap.set('n', '<tab>',   ':bnext<cr>',     opts('Move to Next buffer'))
 vim.keymap.set('n', '<s-tab>', ':bprevious<cr>', opts('Move to Previous buffer'))
 
 -- quickfix navigation
-local quickfix = vim.api.nvim_create_augroup('quickfix', {})
-
-autocmd('BufReadPost', {
-    group   = quickfix,
+vim.api.nvim_create_autocmd('BufReadPost', {
+    group   = vim.api.nvim_create_augroup('quickfix', {}),
     pattern = 'quickfix',
     command = 'nnoremap <buffer> <cr> <cr>'
 })
@@ -66,7 +61,7 @@ vim.keymap.set('n', ']d', vim.diagnostic.goto_next,  opts('Go to next diagnostic
 -- tmux stuff
 local tmux_session = function()
     if vim.env.TMUX then
-        vim.cmd('silent !tmux split-window -h "tmux-session"')
+        vim.fn.system('tmux split-window -v -l 20 "tmux-session"')
     else
         print('Not in a tmux session')
     end
