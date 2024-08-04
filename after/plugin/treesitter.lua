@@ -104,13 +104,13 @@ treesitter.setup({
     }
 })
 
-local repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
-vim.keymap.set({ "n", "x", "o" }, ";", repeat_move.repeat_last_move,          { desc = 'Repeat last move (TreeSitter)', remap = false, silent = true })
-vim.keymap.set({ "n", "x", "o" }, "'", repeat_move.repeat_last_move_opposite, { desc = 'Repeat last move opposite (TreeSitter)', remap = false, silent = true })
-vim.keymap.set({ "n", "x", "o" }, "f", repeat_move.builtin_f_expr, { desc = 'Find forward (TreeSitter)', remap = false, silent = true })
-vim.keymap.set({ "n", "x", "o" }, "F", repeat_move.builtin_F_expr, { desc = 'Find backward (TreeSitter)', remap = false, silent = true })
-vim.keymap.set({ "n", "x", "o" }, "t", repeat_move.builtin_t_expr, { desc = 'Till forward (TreeSitter)', remap = false, silent = true })
-vim.keymap.set({ "n", "x", "o" }, "T", repeat_move.builtin_T_expr, { desc = 'Till backward (TreeSitter)', remap = false, silent = true })
+-- local repeat_move = require('nvim-treesitter.textobjects.repeatable_move')
+-- vim.keymap.set({ "n", "x", "o" }, ";", repeat_move.repeat_last_move,          { desc = 'Repeat last move (TreeSitter)', remap = false, silent = true })
+-- vim.keymap.set({ "n", "x", "o" }, "'", repeat_move.repeat_last_move_opposite, { desc = 'Repeat last move opposite (TreeSitter)', remap = false, silent = true })
+-- vim.keymap.set({ "n", "x", "o" }, "f", repeat_move.builtin_f_expr, { desc = 'Find forward (TreeSitter)', remap = false, silent = true })
+-- vim.keymap.set({ "n", "x", "o" }, "F", repeat_move.builtin_F_expr, { desc = 'Find backward (TreeSitter)', remap = false, silent = true })
+-- vim.keymap.set({ "n", "x", "o" }, "t", repeat_move.builtin_t_expr, { desc = 'Till forward (TreeSitter)', remap = false, silent = true })
+-- vim.keymap.set({ "n", "x", "o" }, "T", repeat_move.builtin_T_expr, { desc = 'Till backward (TreeSitter)', remap = false, silent = true })
 
 local context = require('treesitter-context')
 vim.keymap.set('n', '<leader>c', context.toggle, { desc = 'Toggle context (TreeSitter)', remap = false, silent = true })
