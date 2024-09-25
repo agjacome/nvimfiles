@@ -30,12 +30,6 @@ vim.api.nvim_create_autocmd('BufReadPost', {
     command = 'nnoremap <buffer> <cr> <cr>'
 })
 
--- split window
-vim.keymap.set('n', '<leader>H', ':leftabove vnew<cr>',  opts('Open new Left window'))
-vim.keymap.set('n', '<leader>J', ':leftabove new<cr>',   opts('Open new Down window'))
-vim.keymap.set('n', '<leader>K', ':rightbelow new<cr>',  opts('Open new Up window'))
-vim.keymap.set('n', '<leader>L', ':rightbelow vnew<cr>', opts('Open new Right window'))
-
 -- toggles
 local toggle_hlsearch = function()
     vim.o.hlsearch = not vim.o.hlsearch
