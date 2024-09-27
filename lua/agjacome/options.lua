@@ -35,7 +35,6 @@ vim.opt.scrolloff      = 10
 vim.opt.shiftwidth     = 4
 vim.opt.shortmess      = vim.o.shortmess .. 'c' .. 'I'
 vim.opt.showbreak      = '↳ '
-vim.opt.showtabline    = 2
 vim.opt.signcolumn     = 'yes'
 vim.opt.smartcase      = true
 vim.opt.smartindent    = true
