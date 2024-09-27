@@ -24,9 +24,7 @@ return {
     {
         "thehamsta/nvim-dap-virtual-text",
         event = "VeryLazy",
-        config = function()
-            require("nvim-dap-virtual-text").setup({})
-        end
+        opts = { }
     },
     {
         "nvim-telescope/telescope-dap.nvim",
