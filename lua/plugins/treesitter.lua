@@ -110,7 +110,7 @@ return {
         }
     },
     {
-        "nvim-treesitter/nvim-treesitter-textobjects",
+        "nvim-treesitter/nvim-treesitter-context",
         event = "VeryLazy",
         config = function()
             local context = require("treesitter-context")
