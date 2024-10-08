@@ -22,6 +22,15 @@ return {
         },
         hints = {
             enabled = false
+        },
+        windows = {
+            position = "right",
+            wrap = true,
+            width = 40,
+            sidebar_header = {
+                align = "center",
+                rounded = false
+            }
         }
     }
 }
