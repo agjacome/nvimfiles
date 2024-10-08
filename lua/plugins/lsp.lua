@@ -7,7 +7,8 @@ return {
             "williamboman/mason-lspconfig.nvim",
             "hrsh7th/nvim-cmp",
             "hrsh7th/cmp-nvim-lsp",
-            "l3mon4d3/luasnip", "saadparwaiz1/cmp_luasnip",
+            "l3mon4d3/luasnip",
+            "saadparwaiz1/cmp_luasnip",
             "j-hui/fidget.nvim",
         },
         event = "VeryLazy",
@@ -85,7 +86,6 @@ return {
                 update_in_insert = false,
                 float = {
                     focusable = false,
-                    style = "minimal",
                     source = "if_many",
                     header = "",
                     prefix = "",
