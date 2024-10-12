@@ -18,11 +18,15 @@ return {
             },
             indent = { enable = true },
             ensure_installed = {
+                "bash",
+                "gitcommit",
                 "gitignore",
                 "json",
                 "lua",
                 "markdown",
+                "nix",
                 "vim",
+                "vimdoc",
                 "yaml",
             },
             incremental_selection = {
