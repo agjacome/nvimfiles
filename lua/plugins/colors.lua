@@ -29,6 +29,9 @@ return {
                 component_separators = "|",
                 icons_enabled = false,
                 theme = "zenbones",
+            },
+            sections = {
+                lualine_c = { { 'filename', path = 1, } }
             }
         }
     }
