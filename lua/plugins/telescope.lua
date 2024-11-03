@@ -69,7 +69,7 @@ return {
         vim.keymap.set("n", "<leader>S", builtin.grep_string, opts("Fuzzy-find text under cursor (Telescope)"))
         vim.keymap.set("n", "<leader>l", builtin.treesitter,  opts("Fuzzy-find by syntax (Telescope)"))
 
-        vim.keymap.set("v", "<leader>s", "\"zy<cmd>exec 'Telescope grep_string default_text=' . escape(@z, ' ')<cr>", opts("Fuzzy-find selected text (Telescope)"))
+        vim.keymap.set("v", "<leader>s", "\"zy<cmd>exec 'Telescope live_grep default_text=' . escape(@z, ' ')<cr>", opts("Fuzzy-find selected text (Telescope)"))
 
         vim.keymap.set("n", "<leader>bb", builtin.buffers,                    opts("Fuzzy-find buffers (Telescope)"))
         vim.keymap.set("n", "<leader>bs", builtin.current_buffer_fuzzy_find,  opts("Fuzzy-find current buffer (Telescope)"))
