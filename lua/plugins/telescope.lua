@@ -76,6 +76,7 @@ return {
 
         vim.keymap.set("n", "<leader>gb", builtin.git_bcommits,       opts("Git blame (Telescope)"))
         vim.keymap.set("n", "<leader>gr", builtin.git_bcommits_range, opts("Git blame range (Telescope)"))
+        vim.keymap.set("v", "<leader>gr", builtin.git_bcommits_range, opts("Git blame range (Telescope)"))
         vim.keymap.set('n', '<leader>gc', builtin.git_commits,        opts('Git commits (Telescope)'))
         vim.keymap.set('n', '<leader>gB', builtin.git_branches,       opts('Git branches (Telescope)'))
         vim.keymap.set('n', '<leader>gt', builtin.git_stash,          opts('Git stashes (Telescope)'))
