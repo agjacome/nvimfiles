@@ -1,7 +1,6 @@
 return {
     "nvim-telescope/telescope.nvim",
     dependencies = {
-        "folke/trouble.nvim",
         "nvim-lua/plenary.nvim",
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" }
     },
@@ -10,7 +9,6 @@ return {
         local telescope = require("telescope")
 
         local actions = require("telescope.actions")
-        local trouble = require("trouble.sources.telescope")
 
         telescope.load_extension("fzf")
 
@@ -33,13 +31,7 @@ return {
                         ["<C-k>"] = actions.cycle_history_prev,
                         ["<C-s>"] = actions.cycle_previewers_next,
                         ["<C-r>"] = actions.cycle_previewers_prev,
-                        ["<C-t>"] = trouble.open,
-                        ["<C-T>"] = trouble.add,
                     },
-                    n = {
-                        ["<C-t>"] = trouble.open,
-                        ["<C-T>"] = trouble.add,
-                    }
                 },
             },
             pickers = {
