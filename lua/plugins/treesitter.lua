@@ -130,8 +130,8 @@ return {
         config = function()
             local context = require("treesitter-context")
 
-            vim.keymap.set("n", "<leader>c", context.toggle, { desc = "Toggle context (TreeSitter)", remap = false, silent = true })
-            vim.keymap.set("n", "[cc", function() context.go_to_context(vim.v.count1) end, { desc = "Previous context (TreeSitter)", remap = false, silent = true })
+            vim.keymap.set("n", "<leader>c", context.toggle, Opts("Treesitter- Toggle context"))
+            vim.keymap.set("n", "[cc", function() context.go_to_context(vim.v.count1) end, Opts("Treesitter - Go to context"))
         end
     }
 }

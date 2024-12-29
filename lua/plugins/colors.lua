@@ -18,7 +18,7 @@ return {
                 vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
             end
 
-            vim.keymap.set('n', '<f12>', toggle_background, { remap = false, desc = 'Toggle background' })
+            vim.keymap.set('n', '<f12>', toggle_background, Opts("Colors - Toggle dark/light"))
         end,
     },
     {

@@ -1,5 +1,5 @@
-Opts = function(description)
-    return { desc = description, remap = false, silent = true }
+Opts = function(description, buffer)
+    return { desc = description, remap = false, silent = true, buffer = buffer }
 end
 
 require('agjacome.options')

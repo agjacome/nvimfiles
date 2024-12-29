@@ -1,30 +1,19 @@
-local opts = function(desc)
-    return { desc = desc, remap = false, silent = true }
-end
-
 return {
     {
         "mfussenegger/nvim-dap",
         dependencies = {
-            "thehamsta/nvim-dap-virtual-text",
             "nvim-telescope/telescope-dap.nvim",
         },
         event = "VeryLazy",
         config = function()
             local dap = require("dap")
 
-            vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, opts("Toggle breakpoint (DAP)"))
-            vim.keymap.set("n", "<leader>dc", dap.continue,          opts("Continue (DAP)"))
-            vim.keymap.set("n", "<leader>di", dap.step_into,         opts("Step into (DAP)"))
-            vim.keymap.set("n", "<leader>do", dap.step_over,         opts("Step over (DAP)"))
-            vim.keymap.set("n", "<leader>dr", dap.repl.open,         opts("Open REPL (DAP)"))
-
+            vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, Opts("DAP - Toggle breakpoint"))
+            vim.keymap.set("n", "<leader>dr", dap.repl.open, Opts("DAP - REPL"))
+            vim.keymap.set("n", "<F5>", dap.step_into, Opts("DAP - Step into"))
+            vim.keymap.set("n", "<F6>", dap.step_over, Opts("DAP - Step over"))
+            vim.keymap.set("n", "<F7>", dap.continue, Opts("DAP - Continue"))
         end
-    },
-    {
-        "thehamsta/nvim-dap-virtual-text",
-        event = "VeryLazy",
-        opts = { }
     },
     {
         "nvim-telescope/telescope-dap.nvim",
@@ -33,12 +22,7 @@ return {
         },
         event = "VeryLazy",
         config = function()
-            local telescope = require("telescope")
-
-            telescope.load_extension("dap")
-
-            vim.keymap.set("n", "<leader>dv", telescope.extensions.dap.variables,        opts("List variables (DAP Telescope)"))
-            vim.keymap.set("n", "<leader>dl", telescope.extensions.dap.list_breakpoints, opts("List breakpoints (DAP Telescope)"))
+            require("telescope").load_extension("dap")
         end
     }
 }
