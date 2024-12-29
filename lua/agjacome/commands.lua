@@ -1,4 +1,4 @@
-local group   = vim.api.nvim_create_augroup('agjacome', {})
+local group   = vim.api.nvim_create_augroup('agjacome', { clear = true })
 local autocmd = vim.api.nvim_create_autocmd
 
 -- Restore cursor position when reopening a file

@@ -27,6 +27,7 @@ return {
         opts = {
             options = {
                 component_separators = "|",
+                section_separators = "",
                 icons_enabled = false,
                 theme = "zenbones",
             },
