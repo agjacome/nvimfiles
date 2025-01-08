@@ -35,5 +35,25 @@ return {
                 lualine_c = { { 'filename', path = 1, } }
             }
         }
+    },
+    {
+        "stevearc/dressing.nvim",
+        dependencies = {
+            "nvim-telescope/telescope.nvim"
+        },
+        opts = {
+            input = {
+                border = "single",
+            },
+            select = {
+                telescope = require('telescope.themes').get_dropdown({
+                    borderchars = {
+                        prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+                        results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+                        preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                    }
+                }),
+            },
+        }
     }
 }

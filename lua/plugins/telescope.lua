@@ -7,14 +7,21 @@ return {
     event = "VeryLazy",
     config = function()
         local telescope = require("telescope")
-
         local actions = require("telescope.actions")
 
         telescope.load_extension("fzf")
 
         telescope.setup({
-            defaults = {
+            defaults = require('telescope.themes').get_ivy({
                 path_display = { "shorten" },
+                layout_config = {
+                    height = 40,
+                },
+                borderchars = {
+                    prompt = { "─", "│", " ", "│", "┌", "┐", "│", "│" },
+                    results = { "─", "│", "─", "│", "├", "┤", "┘", "└" },
+                    preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+                },
                 vimgrep_arguments = {
                     "rg",
                     "--color=never",
@@ -33,7 +40,7 @@ return {
                         ["<C-r>"] = actions.cycle_previewers_prev,
                     },
                 },
-            },
+            }),
             pickers = {
                 colorscheme = {
                     enable_preview = true
