@@ -21,11 +21,8 @@ return {
                     local lang = vim.treesitter.language.get_lang(ft) or ft
 
                     if not vim.treesitter.language.add(lang) then
-                        local available = vim.g.ts_available or require('nvim-treesitter').get_available()
-                        if not vim.g.ts_available then
-                            vim.g.ts_available = available
-                        end
-                        if vim.tbl_contains(available, lang) then
+                        vim.g.ts_available = vim.g.ts_available or require('nvim-treesitter').get_available()
+                        if vim.tbl_contains(vim.g.ts_available, lang) then
                             require('nvim-treesitter').install(lang)
                         end
                         return
@@ -122,16 +119,16 @@ return {
             -- swap keymaps
             vim.keymap.set('n', '<leader>na', function()
                 swap.swap_next('@parameter.inner', 'textobjects')
-            end, util.map_opts('Swap next parameter'))
+            end, util.map_opts('Treesitter - Swap next parameter'))
             vim.keymap.set('n', '<leader>nm', function()
                 swap.swap_next('@function.outer', 'textobjects')
-            end, util.map_opts('Swap next function'))
+            end, util.map_opts('Treesitter - Swap next function'))
             vim.keymap.set('n', '<leader>pa', function()
                 swap.swap_previous('@parameter.inner', 'textobjects')
-            end, util.map_opts('Swap prev parameter'))
+            end, util.map_opts('Treesitter - Swap prev parameter'))
             vim.keymap.set('n', '<leader>pm', function()
                 swap.swap_previous('@function.outer', 'textobjects')
-            end, util.map_opts('Swap prev function'))
+            end, util.map_opts('Treesitter - Swap prev function'))
         end,
     },
     {
