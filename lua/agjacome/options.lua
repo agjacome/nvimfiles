@@ -8,11 +8,11 @@ vim.opt.diffopt        = 'filler'
 vim.opt.directory      = '/tmp'
 vim.opt.expandtab      = true
 vim.opt.exrc           = true
-vim.opt.fillchars      = vim.o.fillchars .. 'vert:│'
+vim.opt.fillchars:append({ vert = '│' })
 vim.opt.fixendofline   = true
 vim.opt.foldenable     = false
 vim.opt.foldmethod     = 'manual'
-vim.opt.formatoptions  = vim.o.formatoptions .. 'j'
+vim.opt.formatoptions:append('j')
 vim.opt.guicursor      = ''
 vim.opt.history        = 10000
 vim.opt.ignorecase     = true
@@ -26,7 +26,7 @@ vim.opt.pumheight      = 10
 vim.opt.relativenumber = true
 vim.opt.scrolloff      = 10
 vim.opt.shiftwidth     = 4
-vim.opt.shortmess      = vim.o.shortmess .. 'c' .. 'I'
+vim.opt.shortmess:append('cI')
 vim.opt.showbreak      = '↳ '
 vim.opt.signcolumn     = 'number'
 vim.opt.smartcase      = true
