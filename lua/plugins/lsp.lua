@@ -58,19 +58,20 @@ return {
 
             vim.api.nvim_create_autocmd("LspAttach", {
                 desc = "LSP Actions",
-                callback = function()
-                    vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", Opts("LSP - Hover"))
-                    vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", Opts("LSP - Definition"))
-                    vim.keymap.set("n", "gD", "<cmd>Telescope lsp_type_definitions<cr>", Opts("LSP - Type definition"))
-                    vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", Opts("LSP - Implementation"))
-                    vim.keymap.set("n", "gI", "<cmd>Telescope lsp_incoming_calls<cr>", Opts("LSP - Incoming calls"))
-                    vim.keymap.set("n", "gO", "<cmd>Telescope lsp_outgoing_calls<cr>", Opts("LSP - Outgoing calls"))
-                    vim.keymap.set("n", "grr", "<cmd>Telescope lsp_references<cr>", Opts("LSP - References"))
-                    vim.keymap.set("n", "grn", "<cmd>lua vim.lsp.buf.rename()<cr>", Opts("LSP - Rename"))
-                    vim.keymap.set("n", "gra", "<cmd>lua vim.lsp.buf.code_action()<cr>", Opts("LSP - Action"))
-                    vim.keymap.set("n", "<leader>l", "<cmd>Telescope lsp_document_symbols<cr>", Opts("LSP - Symbols"))
-                    vim.keymap.set("n", "<leader>L", "<cmd>Telescope lsp_workspace_symbols<cr>", Opts("LSP - Workspace symbols"))
-                    vim.keymap.set({ "n", "x" }, "grf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", Opts("LSP - Format"))
+                callback = function(event)
+                    local buf = event.buf
+                    vim.keymap.set("n", "K", "<cmd>lua vim.lsp.buf.hover()<cr>", Opts("LSP - Hover", buf))
+                    vim.keymap.set("n", "gd", "<cmd>Telescope lsp_definitions<cr>", Opts("LSP - Definition", buf))
+                    vim.keymap.set("n", "gD", "<cmd>Telescope lsp_type_definitions<cr>", Opts("LSP - Type definition", buf))
+                    vim.keymap.set("n", "gi", "<cmd>Telescope lsp_implementations<cr>", Opts("LSP - Implementation", buf))
+                    vim.keymap.set("n", "gI", "<cmd>Telescope lsp_incoming_calls<cr>", Opts("LSP - Incoming calls", buf))
+                    vim.keymap.set("n", "gO", "<cmd>Telescope lsp_outgoing_calls<cr>", Opts("LSP - Outgoing calls", buf))
+                    vim.keymap.set("n", "grr", "<cmd>Telescope lsp_references<cr>", Opts("LSP - References", buf))
+                    vim.keymap.set("n", "grn", "<cmd>lua vim.lsp.buf.rename()<cr>", Opts("LSP - Rename", buf))
+                    vim.keymap.set("n", "gra", "<cmd>lua vim.lsp.buf.code_action()<cr>", Opts("LSP - Action", buf))
+                    vim.keymap.set("n", "<leader>l", "<cmd>Telescope lsp_document_symbols<cr>", Opts("LSP - Symbols", buf))
+                    vim.keymap.set("n", "<leader>L", "<cmd>Telescope lsp_workspace_symbols<cr>", Opts("LSP - Workspace symbols", buf))
+                    vim.keymap.set({ "n", "x" }, "grf", "<cmd>lua vim.lsp.buf.format({async = true})<cr>", Opts("LSP - Format", buf))
                 end
             })
 
