@@ -37,7 +37,9 @@ return {
                 lualine_c = {
                     { 'filename', path = 1 },
                     {
-                        vim.ui.progress_status,
+                        function()
+                            return vim.ui.progress_status()
+                        end,
                         cond = function()
                             return vim.ui.progress_status() ~= ''
                         end,

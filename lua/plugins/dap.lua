@@ -69,18 +69,4 @@ return {
             )
         end,
     },
-    {
-        'rcarriga/nvim-dap-ui',
-        lazy = true,
-        dependencies = { 'nvim-neotest/nvim-nio' },
-    },
-    {
-        'theHamsta/nvim-dap-virtual-text',
-        lazy = true,
-    },
-    {
-        'nvim-telescope/telescope-dap.nvim',
-        lazy = true,
-        dependencies = { 'nvim-telescope/telescope.nvim' },
-    },
 }

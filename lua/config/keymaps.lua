@@ -15,8 +15,8 @@ vim.keymap.set('n', '<up>', '<nop>')
 vim.keymap.set('n', '<down>', '<nop>')
 
 -- navigation
-vim.keymap.set('n', '<tab>', ':bnext<cr>', Opts('Buffer- Next'))
-vim.keymap.set('n', '<s-tab>', ':bprevious<cr>', Opts('Buffer- Previous'))
+vim.keymap.set('n', '<tab>', ':bnext<cr>', Opts('Buffer - Next'))
+vim.keymap.set('n', '<s-tab>', ':bprevious<cr>', Opts('Buffer - Previous'))
 
 -- diagnostics
 vim.keymap.set('n', 'gl', vim.diagnostic.open_float, Opts('Diagnostics - Open'))
@@ -29,7 +29,7 @@ end, Opts('Diagnostics - Next'))
 
 -- quickfix
 vim.api.nvim_create_autocmd('FileType', {
-    group = vim.api.nvim_create_augroup('quickfix', {}),
+    group = vim.api.nvim_create_augroup('quickfix', { clear = true }),
     pattern = 'qf',
     callback = function(event)
         vim.keymap.set('n', '<cr>', '<cr>', { buffer = event.buf })

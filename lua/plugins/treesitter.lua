@@ -9,9 +9,12 @@ return {
 
             vim.api.nvim_create_autocmd('FileType', {
                 callback = function(args)
-                    local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
-                    if ok and stats and stats.size > max_filesize then
-                        return
+                    local name = vim.api.nvim_buf_get_name(args.buf)
+                    if name ~= '' then
+                        local ok, stats = pcall(vim.uv.fs_stat, name)
+                        if ok and stats and stats.size > max_filesize then
+                            return
+                        end
                     end
 
                     local ft = vim.bo[args.buf].filetype
@@ -25,11 +28,9 @@ return {
                         if vim.tbl_contains(available, lang) then
                             require('nvim-treesitter').install(lang)
                         end
-                    end
-
-                    if not vim.treesitter.language.add(lang) then
                         return
                     end
+
                     vim.treesitter.start(args.buf, lang)
                     vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                 end,
@@ -41,6 +42,7 @@ return {
         branch = 'main',
         event = 'VeryLazy',
         config = function()
+            local Opts = require('config.util')
             local select_fn = require('nvim-treesitter-textobjects.select').select_textobject
             local move = require('nvim-treesitter-textobjects.move')
             local swap = require('nvim-treesitter-textobjects.swap')
@@ -74,7 +76,7 @@ return {
             for key, cfg in pairs(select_maps) do
                 vim.keymap.set({ 'x', 'o' }, key, function()
                     select_fn(cfg.query, 'textobjects')
-                end, { desc = cfg.desc })
+                end, Opts(cfg.desc))
             end
 
             -- move keymaps
@@ -113,23 +115,23 @@ return {
                 for key, cfg in pairs(mappings) do
                     vim.keymap.set({ 'n', 'x', 'o' }, key, function()
                         move[fn_name](cfg.query, 'textobjects')
-                    end, { desc = cfg.desc })
+                    end, Opts(cfg.desc))
                 end
             end
 
             -- swap keymaps
             vim.keymap.set('n', '<leader>na', function()
                 swap.swap_next('@parameter.inner', 'textobjects')
-            end, { desc = 'Swap next parameter' })
+            end, Opts('Swap next parameter'))
             vim.keymap.set('n', '<leader>nm', function()
                 swap.swap_next('@function.outer', 'textobjects')
-            end, { desc = 'Swap next function' })
+            end, Opts('Swap next function'))
             vim.keymap.set('n', '<leader>pa', function()
                 swap.swap_previous('@parameter.inner', 'textobjects')
-            end, { desc = 'Swap prev parameter' })
+            end, Opts('Swap prev parameter'))
             vim.keymap.set('n', '<leader>pm', function()
                 swap.swap_previous('@function.outer', 'textobjects')
-            end, { desc = 'Swap prev function' })
+            end, Opts('Swap prev function'))
         end,
     },
     {
