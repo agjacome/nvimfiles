@@ -7,6 +7,9 @@ return {
             runtime = {
                 version = 'LuaJIT',
             },
+            hint = {
+                enable = true,
+            },
         },
     },
 }

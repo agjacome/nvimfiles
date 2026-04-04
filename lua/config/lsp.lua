@@ -30,6 +30,9 @@ vim.api.nvim_create_autocmd('LspAttach', {
             '<cmd>lua vim.lsp.buf.format({async = true})<cr>',
             Opts('LSP - Format', buf)
         )
+        vim.keymap.set('n', '<leader>ih', function()
+            vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+        end, Opts('LSP - Toggle inlay hints', buf))
     end,
 })
 
