@@ -6,7 +6,7 @@ return {
         },
         lazy = false,
         config = function()
-            local Opts = require('agjacome.opts')
+            local Opts = require('config.util')
 
             vim.g.zenbones = {
                 lightness = 'dim',

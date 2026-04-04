@@ -9,7 +9,7 @@ return {
         },
         keys = { "<leader>db", "<leader>du", "<F7>" },
         config = function()
-            local Opts = require("agjacome.opts")
+            local Opts = require("config.util")
             local dap = require("dap")
             local dapui = require("dapui")
 

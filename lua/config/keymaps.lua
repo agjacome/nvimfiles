@@ -1,4 +1,4 @@
-local Opts = require('agjacome.opts')
+local Opts = require('config.util')
 
 -- leaders
 vim.g.mapleader      = " "
@@ -36,6 +36,12 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.keymap.set("n", "<leader>X", "<cmd>source %<cr>", Opts("Source - Current file"))
 vim.keymap.set("v", "<leader>X", ":lua<cr>", Opts("Source - Current selection"))
 vim.keymap.set("n", "<leader><cr>", function() vim.o.hlsearch = not vim.o.hlsearch end, Opts("Search - Toggle highlight"))
+
+vim.keymap.set("n", "<leader>yp", function()
+    local path = vim.fn.expand('%:.')
+    vim.fn.setreg("+", path)
+    vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, Opts("Yank - File path"))
 
 local tmux_session = function()
     if vim.env.TMUX then

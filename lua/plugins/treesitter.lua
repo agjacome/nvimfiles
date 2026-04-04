@@ -125,7 +125,7 @@ return {
         "nvim-treesitter/nvim-treesitter-context",
         event = "VeryLazy",
         config = function()
-            local Opts = require('agjacome.opts')
+            local Opts = require('config.util')
             local context = require("treesitter-context")
 
             context.setup({

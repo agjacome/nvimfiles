@@ -1,1 +1,1 @@
-require('agjacome')
+require('config')

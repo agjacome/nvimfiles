@@ -11,7 +11,7 @@ return {
         },
     },
     config = function(_, opts)
-        local Opts = require('agjacome.opts')
+        local Opts = require('config.util')
         require("arrow").setup(opts)
 
         local persist = require("arrow.persist")
