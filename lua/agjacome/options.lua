@@ -1,20 +1,16 @@
 vim.opt.autowrite      = true
-vim.opt.backup         = false
 vim.opt.breakindent    = true
 vim.opt.clipboard      = 'unnamedplus'
 vim.opt.completeopt    = 'menu,menuone,noselect,popup'
-vim.opt.directory      = '/tmp'
 vim.opt.expandtab      = true
 vim.opt.exrc           = true
 vim.opt.fillchars:append({ vert = '│' })
-vim.opt.fixendofline   = true
 vim.opt.foldenable     = false
 vim.opt.foldmethod     = 'manual'
 vim.opt.formatoptions:append('j')
 vim.opt.guicursor      = ''
 vim.opt.history        = 10000
 vim.opt.ignorecase     = true
-vim.opt.joinspaces     = false
 vim.opt.laststatus     = 3
 vim.opt.list           = true
 vim.opt.listchars      = { extends = '❯', nbsp = '⋅', precedes = '❮', space = '⋅', tab = '▸ ', trail = '⋅' }
