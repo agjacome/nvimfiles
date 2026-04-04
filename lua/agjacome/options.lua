@@ -41,7 +41,6 @@ vim.opt.smartindent    = true
 vim.opt.softtabstop    = 4
 vim.opt.swapfile       = false
 vim.opt.tabstop        = 4
-vim.opt.termguicolors  = true
 vim.opt.textwidth      = 79
 vim.opt.timeoutlen     = 500
 vim.opt.title          = true
