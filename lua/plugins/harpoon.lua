@@ -1,27 +1,27 @@
 return {
-    "theprimeagen/harpoon",
+    "otavioschwanck/arrow.nvim",
     event = "VeryLazy",
-    config = function()
+    opts = {
+        show_icons = false,
+        leader_key = "<leader>hl",
+        save_key = "git_root",
+        index_keys = "123456789",
+        window = {
+            border = "single",
+        },
+    },
+    config = function(_, opts)
         local Opts = require('agjacome.opts')
+        require("arrow").setup(opts)
 
-        require("harpoon").setup()
+        local persist = require("arrow.persist")
 
-        local marks = require("harpoon.mark")
-        local ui    = require("harpoon.ui")
+        vim.keymap.set("n", "<leader>ha", persist.toggle, Opts("Arrow - Toggle file"))
+        vim.keymap.set("n", "<leader>hj", persist.next, Opts("Arrow - Next file"))
+        vim.keymap.set("n", "<leader>hk", persist.previous, Opts("Arrow - Previous file"))
 
-        vim.keymap.set("n", "<leader>ha", marks.add_file,       Opts("Harpoon - Add file"))
-        vim.keymap.set("n", "<leader>hj", ui.nav_next,          Opts("Harpoon - Go up"))
-        vim.keymap.set("n", "<leader>hk", ui.nav_prev,          Opts("Harpoon - Go down"))
-        vim.keymap.set("n", "<leader>hl", ui.toggle_quick_menu, Opts("Harpoon - Toggle Menu"))
-
-        vim.keymap.set("n", "<leader>1", function() ui.nav_file(1) end, Opts("Harpoon - Goto 1"))
-        vim.keymap.set("n", "<leader>2", function() ui.nav_file(2) end, Opts("Harpoon - Goto 2"))
-        vim.keymap.set("n", "<leader>3", function() ui.nav_file(3) end, Opts("Harpoon - Goto 3"))
-        vim.keymap.set("n", "<leader>4", function() ui.nav_file(4) end, Opts("Harpoon - Goto 4"))
-        vim.keymap.set("n", "<leader>5", function() ui.nav_file(5) end, Opts("Harpoon - Goto 5"))
-        vim.keymap.set("n", "<leader>6", function() ui.nav_file(6) end, Opts("Harpoon - Goto 6"))
-        vim.keymap.set("n", "<leader>7", function() ui.nav_file(7) end, Opts("Harpoon - Goto 7"))
-        vim.keymap.set("n", "<leader>8", function() ui.nav_file(8) end, Opts("Harpoon - Goto 8"))
-        vim.keymap.set("n", "<leader>9", function() ui.nav_file(9) end, Opts("Harpoon - Goto 9"))
-    end
+        for i = 1, 9 do
+            vim.keymap.set("n", "<leader>" .. i, function() persist.go_to(i) end, Opts("Arrow - Goto " .. i))
+        end
+    end,
 }
