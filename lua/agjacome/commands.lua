@@ -32,7 +32,7 @@ autocmd('CmdlineLeave', {
     group = group,
     pattern = '*',
     callback = function()
-        vim.fn.timer_start(500, function() vim.cmd('echon " "') end)
+        vim.defer_fn(function() vim.cmd('echon " "') end, 500)
     end
 })
 
