@@ -18,8 +18,8 @@ vim.keymap.set("n", "<s-tab>", ":bprevious<cr>", Opts("Buffer- Previous"))
 
 -- diagnostics
 vim.keymap.set("n", "gl", vim.diagnostic.open_float, Opts("Diagnostics - Open"))
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev,  Opts("Diagnostics - Previous"))
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next,  Opts("Diagnostics - Next"))
+vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, Opts("Diagnostics - Previous"))
+vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count =  1 }) end, Opts("Diagnostics - Next"))
 
 -- quickfix
 vim.api.nvim_create_autocmd("BufReadPost", {
