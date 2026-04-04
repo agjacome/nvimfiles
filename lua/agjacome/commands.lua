@@ -5,14 +5,26 @@ local autocmd = vim.api.nvim_create_autocmd
 autocmd('BufReadPost', {
     group   = group,
     pattern = '*',
-    command = [[if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal g`\"" | endif]]
+    callback = function()
+        local mark = vim.api.nvim_buf_get_mark(0, '"')
+        if mark[1] > 0 and mark[1] <= vim.api.nvim_buf_line_count(0) then
+            vim.api.nvim_win_set_cursor(0, mark)
+        end
+    end
 })
 
 -- Remove trailing whitespaces on save
 autocmd('BufWritePre', {
     group   = group,
     pattern = '*',
-    command = [[if &filetype !~# 'markdown\|text' | silent! %s/\s\+$//e | endif]]
+    callback = function()
+        local ft = vim.bo.filetype
+        if ft ~= 'markdown' and ft ~= 'text' then
+            local view = vim.fn.winsaveview()
+            vim.cmd([[silent! %s/\s\+$//e]])
+            vim.fn.winrestview(view)
+        end
+    end
 })
 
 -- Clear command from ruler after 5ms
