@@ -6,6 +6,7 @@ return {
     },
     event = "VeryLazy",
     config = function()
+        local Opts = require('agjacome.opts')
         local telescope = require("telescope")
         local actions = require("telescope.actions")
 

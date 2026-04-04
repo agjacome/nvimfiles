@@ -163,6 +163,7 @@ return {
         "nvim-treesitter/nvim-treesitter-context",
         event = "VeryLazy",
         config = function()
+            local Opts = require('agjacome.opts')
             local context = require("treesitter-context")
 
             vim.keymap.set("n", "<leader>c", context.toggle, Opts("Treesitter - Toggle context"))

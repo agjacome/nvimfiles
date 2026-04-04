@@ -2,6 +2,8 @@ return {
     "theprimeagen/harpoon",
     event = "VeryLazy",
     config = function()
+        local Opts = require('agjacome.opts')
+
         require("harpoon").setup()
 
         local marks = require("harpoon.mark")

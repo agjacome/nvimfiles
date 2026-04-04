@@ -2,6 +2,8 @@ return {
     "tpope/vim-fugitive",
     event = "VeryLazy",
     config = function()
+        local Opts = require('agjacome.opts')
+
         vim.keymap.set("n", "<leader>gs", vim.cmd.Git, Opts("Fugitive - Open"))
 
         vim.api.nvim_create_autocmd("BufWinEnter", {

@@ -13,6 +13,8 @@ return {
         },
         event = "VeryLazy",
         config = function()
+            local Opts = require('agjacome.opts')
+
             require("mason").setup({})
             require("mason-lspconfig").setup({
                 ensure_installed = {

@@ -1,3 +1,5 @@
+local Opts = require('agjacome.opts')
+
 -- leaders
 vim.g.mapleader      = " "
 vim.g.maplocalleader = " "

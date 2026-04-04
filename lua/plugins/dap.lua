@@ -6,6 +6,7 @@ return {
         },
         event = "VeryLazy",
         config = function()
+            local Opts = require('agjacome.opts')
             local dap = require("dap")
 
             vim.keymap.set("n", "<leader>db", dap.toggle_breakpoint, Opts("DAP - Toggle breakpoint"))

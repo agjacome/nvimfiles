@@ -6,6 +6,8 @@ return {
         },
         lazy = false,
         config = function()
+            local Opts = require('agjacome.opts')
+
             vim.g.zenbones = {
                 lightness = 'dim',
                 italic_comments = false,
