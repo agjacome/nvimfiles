@@ -1,8 +1,8 @@
 return {
     {
-        "mcchrish/zenbones.nvim",
+        'mcchrish/zenbones.nvim',
         dependencies = {
-            "rktjmp/lush.nvim",
+            'rktjmp/lush.nvim',
         },
         lazy = false,
         config = function()
@@ -20,25 +20,30 @@ return {
                 vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
             end
 
-            vim.keymap.set('n', '<f12>', toggle_background, Opts("Colors - Toggle dark/light"))
+            vim.keymap.set('n', '<f12>', toggle_background, Opts('Colors - Toggle dark/light'))
         end,
     },
     {
-        "nvim-lualine/lualine.nvim",
+        'nvim-lualine/lualine.nvim',
         lazy = false,
         opts = {
             options = {
-                component_separators = "|",
-                section_separators = "",
+                component_separators = '|',
+                section_separators = '',
                 icons_enabled = false,
-                theme = "zenbones",
+                theme = 'zenbones',
             },
             sections = {
                 lualine_c = {
                     { 'filename', path = 1 },
-                    { vim.ui.progress_status, cond = function() return vim.ui.progress_status() ~= "" end },
-                }
-            }
-        }
+                    {
+                        vim.ui.progress_status,
+                        cond = function()
+                            return vim.ui.progress_status() ~= ''
+                        end,
+                    },
+                },
+            },
+        },
     },
 }

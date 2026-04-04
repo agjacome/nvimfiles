@@ -18,6 +18,7 @@
               pkgs.ripgrep
               pkgs.fd
               pkgs.lua-language-server
+              pkgs.stylua
             ];
           };
         };
