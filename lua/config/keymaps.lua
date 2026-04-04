@@ -1,4 +1,4 @@
-local Opts = require('config.util')
+local util = require('config.util')
 
 local preview_hunk = function()
     local file = vim.fn.expand('%:.')
@@ -73,17 +73,17 @@ vim.keymap.set('n', '<up>', '<nop>')
 vim.keymap.set('n', '<down>', '<nop>')
 
 -- navigation
-vim.keymap.set('n', '<tab>', ':bnext<cr>', Opts('Buffer - Next'))
-vim.keymap.set('n', '<s-tab>', ':bprevious<cr>', Opts('Buffer - Previous'))
+vim.keymap.set('n', '<tab>', ':bnext<cr>', util.map_opts('Buffer - Next'))
+vim.keymap.set('n', '<s-tab>', ':bprevious<cr>', util.map_opts('Buffer - Previous'))
 
 -- diagnostics
-vim.keymap.set('n', 'gl', vim.diagnostic.open_float, Opts('Diagnostics - Open'))
+vim.keymap.set('n', 'gl', vim.diagnostic.open_float, util.map_opts('Diagnostics - Open'))
 vim.keymap.set('n', '[d', function()
     vim.diagnostic.jump({ count = -1 })
-end, Opts('Diagnostics - Previous'))
+end, util.map_opts('Diagnostics - Previous'))
 vim.keymap.set('n', ']d', function()
     vim.diagnostic.jump({ count = 1 })
-end, Opts('Diagnostics - Next'))
+end, util.map_opts('Diagnostics - Next'))
 
 -- quickfix
 vim.api.nvim_create_autocmd('FileType', {
@@ -95,19 +95,19 @@ vim.api.nvim_create_autocmd('FileType', {
 })
 
 -- custom
-vim.keymap.set('n', '<leader>X', '<cmd>source %<cr>', Opts('Source - Current file'))
-vim.keymap.set('v', '<leader>X', ':lua<cr>', Opts('Source - Current selection'))
+vim.keymap.set('n', '<leader>X', '<cmd>source %<cr>', util.map_opts('Source - Current file'))
+vim.keymap.set('v', '<leader>X', ':lua<cr>', util.map_opts('Source - Current selection'))
 vim.keymap.set('n', '<leader><cr>', function()
     vim.o.hlsearch = not vim.o.hlsearch
-end, Opts('Search - Toggle highlight'))
+end, util.map_opts('Search - Toggle highlight'))
 
 vim.keymap.set('n', '<leader>yp', function()
     local path = vim.fn.expand('%:.')
     vim.fn.setreg('+', path)
     vim.notify('Copied "' .. path .. '" to the clipboard!')
-end, Opts('Yank - File path'))
+end, util.map_opts('Yank - File path'))
 
-vim.keymap.set('n', '<leader>gd', preview_hunk, Opts('Git - Preview hunk'))
+vim.keymap.set('n', '<leader>gd', preview_hunk, util.map_opts('Git - Preview hunk'))
 
 local tmux_session = function()
     if vim.env.TMUX then
@@ -117,4 +117,4 @@ local tmux_session = function()
     end
 end
 
-vim.keymap.set('n', '<c-t>', tmux_session, Opts('Tmux - Switch session'))
+vim.keymap.set('n', '<c-t>', tmux_session, util.map_opts('Tmux - Switch session'))

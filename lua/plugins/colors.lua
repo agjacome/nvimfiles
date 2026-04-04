@@ -6,7 +6,7 @@ return {
         },
         lazy = false,
         config = function()
-            local Opts = require('config.util')
+            local util = require('config.util')
 
             vim.g.zenbones = {
                 lightness = 'dim',
@@ -20,7 +20,7 @@ return {
                 vim.o.background = vim.o.background == 'dark' and 'light' or 'dark'
             end
 
-            vim.keymap.set('n', '<f12>', toggle_background, Opts('Colors - Toggle dark/light'))
+            vim.keymap.set('n', '<f12>', toggle_background, util.map_opts('Colors - Toggle dark/light'))
         end,
     },
     {

@@ -7,7 +7,7 @@ return {
     },
     event = 'VeryLazy',
     config = function()
-        local Opts = require('config.util')
+        local util = require('config.util')
         local telescope = require('telescope')
         local actions = require('telescope.actions')
 
@@ -68,21 +68,21 @@ return {
             })
         end
 
-        vim.keymap.set('n', '<C-p>', builtin.git_files, Opts('Telescope - Git files'))
-        vim.keymap.set('n', '<leader>p', find_files, Opts('Telescope - Workspace files'))
-        vim.keymap.set('n', '<leader>s', builtin.live_grep, Opts('Telescope - Content'))
-        vim.keymap.set('n', '<leader>S', builtin.grep_string, Opts('Telescope - Word under cursor'))
+        vim.keymap.set('n', '<C-p>', builtin.git_files, util.map_opts('Telescope - Git files'))
+        vim.keymap.set('n', '<leader>p', find_files, util.map_opts('Telescope - Workspace files'))
+        vim.keymap.set('n', '<leader>s', builtin.live_grep, util.map_opts('Telescope - Content'))
+        vim.keymap.set('n', '<leader>S', builtin.grep_string, util.map_opts('Telescope - Word under cursor'))
         vim.keymap.set('v', '<leader>s', function()
             local text = table.concat(vim.fn.getregion(vim.fn.getpos('v'), vim.fn.getpos('.')), '\n')
             builtin.live_grep({ default_text = text })
-        end, Opts('Telescope - Selected text'))
+        end, util.map_opts('Telescope - Selected text'))
 
-        vim.keymap.set('n', '<leader>bb', builtin.buffers, Opts('Telescope - Buffers'))
-        vim.keymap.set('n', '<leader>sr', builtin.resume, Opts('Telescope - Resume'))
-        vim.keymap.set('n', '<leader>?', builtin.keymaps, Opts('Telescope - Keymaps'))
+        vim.keymap.set('n', '<leader>bb', builtin.buffers, util.map_opts('Telescope - Buffers'))
+        vim.keymap.set('n', '<leader>sr', builtin.resume, util.map_opts('Telescope - Resume'))
+        vim.keymap.set('n', '<leader>?', builtin.keymaps, util.map_opts('Telescope - Keymaps'))
 
-        vim.keymap.set('n', '<leader>gb', builtin.git_bcommits, Opts('Telescope - Git blame'))
-        vim.keymap.set('v', '<leader>gr', builtin.git_bcommits_range, Opts('Telescope - Git blame range'))
-        vim.keymap.set('n', '<leader>gc', builtin.git_commits, Opts('Telescope - Git commits'))
+        vim.keymap.set('n', '<leader>gb', builtin.git_bcommits, util.map_opts('Telescope - Git blame'))
+        vim.keymap.set('v', '<leader>gr', builtin.git_bcommits_range, util.map_opts('Telescope - Git blame range'))
+        vim.keymap.set('n', '<leader>gc', builtin.git_commits, util.map_opts('Telescope - Git commits'))
     end,
 }

@@ -42,7 +42,7 @@ return {
         branch = 'main',
         event = 'VeryLazy',
         config = function()
-            local Opts = require('config.util')
+            local util = require('config.util')
             local select_fn = require('nvim-treesitter-textobjects.select').select_textobject
             local move = require('nvim-treesitter-textobjects.move')
             local swap = require('nvim-treesitter-textobjects.swap')
@@ -76,7 +76,7 @@ return {
             for key, cfg in pairs(select_maps) do
                 vim.keymap.set({ 'x', 'o' }, key, function()
                     select_fn(cfg.query, 'textobjects')
-                end, Opts(cfg.desc))
+                end, util.map_opts(cfg.desc))
             end
 
             -- move keymaps
@@ -115,40 +115,40 @@ return {
                 for key, cfg in pairs(mappings) do
                     vim.keymap.set({ 'n', 'x', 'o' }, key, function()
                         move[fn_name](cfg.query, 'textobjects')
-                    end, Opts(cfg.desc))
+                    end, util.map_opts(cfg.desc))
                 end
             end
 
             -- swap keymaps
             vim.keymap.set('n', '<leader>na', function()
                 swap.swap_next('@parameter.inner', 'textobjects')
-            end, Opts('Swap next parameter'))
+            end, util.map_opts('Swap next parameter'))
             vim.keymap.set('n', '<leader>nm', function()
                 swap.swap_next('@function.outer', 'textobjects')
-            end, Opts('Swap next function'))
+            end, util.map_opts('Swap next function'))
             vim.keymap.set('n', '<leader>pa', function()
                 swap.swap_previous('@parameter.inner', 'textobjects')
-            end, Opts('Swap prev parameter'))
+            end, util.map_opts('Swap prev parameter'))
             vim.keymap.set('n', '<leader>pm', function()
                 swap.swap_previous('@function.outer', 'textobjects')
-            end, Opts('Swap prev function'))
+            end, util.map_opts('Swap prev function'))
         end,
     },
     {
         'nvim-treesitter/nvim-treesitter-context',
         event = 'VeryLazy',
         config = function()
-            local Opts = require('config.util')
+            local util = require('config.util')
             local context = require('treesitter-context')
 
             context.setup({
                 max_lines = 3,
             })
 
-            vim.keymap.set('n', '<leader>c', context.toggle, Opts('Treesitter - Toggle context'))
+            vim.keymap.set('n', '<leader>c', context.toggle, util.map_opts('Treesitter - Toggle context'))
             vim.keymap.set('n', '[cc', function()
                 context.go_to_context(vim.v.count1)
-            end, Opts('Treesitter - Go to context'))
+            end, util.map_opts('Treesitter - Go to context'))
         end,
     },
 }
