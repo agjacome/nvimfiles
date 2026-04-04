@@ -24,10 +24,12 @@ vim.keymap.set("n", "[d", function() vim.diagnostic.jump({ count = -1 }) end, Op
 vim.keymap.set("n", "]d", function() vim.diagnostic.jump({ count =  1 }) end, Opts("Diagnostics - Next"))
 
 -- quickfix
-vim.api.nvim_create_autocmd("BufReadPost", {
+vim.api.nvim_create_autocmd("FileType", {
     group   = vim.api.nvim_create_augroup("quickfix", {}),
-    pattern = "quickfix",
-    command = "nnoremap <buffer> <cr> <cr>"
+    pattern = "qf",
+    callback = function(event)
+        vim.keymap.set("n", "<cr>", "<cr>", { buffer = event.buf })
+    end
 })
 
 -- custom
