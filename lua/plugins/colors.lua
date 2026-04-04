@@ -34,7 +34,10 @@ return {
                 theme = "zenbones",
             },
             sections = {
-                lualine_c = { { 'filename', path = 1, } }
+                lualine_c = {
+                    { 'filename', path = 1 },
+                    { vim.ui.progress_status, cond = function() return vim.ui.progress_status() ~= "" end },
+                }
             }
         }
     },
