@@ -78,6 +78,7 @@ return {
         end, Opts('Telescope - Selected text'))
 
         vim.keymap.set('n', '<leader>bb', builtin.buffers, Opts('Telescope - Buffers'))
+        vim.keymap.set('n', '<leader>sr', builtin.resume, Opts('Telescope - Resume'))
         vim.keymap.set('n', '<leader>?', builtin.keymaps, Opts('Telescope - Keymaps'))
 
         vim.keymap.set('n', '<leader>gb', builtin.git_bcommits, Opts('Telescope - Git blame'))
