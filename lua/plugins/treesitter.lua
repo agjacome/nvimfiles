@@ -5,6 +5,7 @@ return {
         lazy = false,
         build = ":TSUpdate",
         config = function()
+            local bundled = { c = true, lua = true, markdown = true, markdown_inline = true, query = true, vim = true, vimdoc = true }
             local ignored_filetypes = { lazy = true, lazy_backdrop = true }
             local max_filesize = 100 * 1024 -- 100KB
 
@@ -13,19 +14,22 @@ return {
                     local ft = vim.bo[args.buf].filetype
                     if ignored_filetypes[ft] then return end
 
-                    -- large file check
                     local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
                     if ok and stats and stats.size > max_filesize then return end
 
                     local lang = vim.treesitter.language.get_lang(ft) or ft
 
-                    if not pcall(vim.treesitter.start, args.buf) then
+                    if not vim.treesitter.language.add(lang) then
+                        if bundled[lang] then return end
+                        local parsers = require("nvim-treesitter.parsers")
+                        if not parsers[lang] then return end
                         pcall(function()
                             require("nvim-treesitter").install({ lang }):wait(30000)
-                            vim.treesitter.start(args.buf)
+                            if not vim.treesitter.language.add(lang) then return end
                         end)
                     end
 
+                    if not pcall(vim.treesitter.start, args.buf) then return end
                     vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                 end,
             })
