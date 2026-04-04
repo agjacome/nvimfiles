@@ -4,7 +4,6 @@ vim.opt.breakindent    = true
 vim.opt.clipboard      = 'unnamedplus'
 vim.opt.complete       = '.,b,u,]'
 vim.opt.completeopt    = 'menu,menuone,noselect,popup'
-vim.opt.diffopt        = 'filler'
 vim.opt.directory      = '/tmp'
 vim.opt.expandtab      = true
 vim.opt.exrc           = true
