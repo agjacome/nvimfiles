@@ -3,28 +3,25 @@ return {
     branch = '1.0',
     event = 'VeryLazy',
     config = function()
+        local util = require('config.util')
         local mc = require('multicursor-nvim')
         mc.setup()
 
         local set = vim.keymap.set
 
-        -- Add cursor on word/selection match
         set({ 'n', 'x' }, '<c-n>', function()
             mc.matchAddCursor(1)
-        end)
+        end, util.map_opts('Multicursor - Add on match'))
 
-        -- Add cursor above/below
         set({ 'n', 'x' }, '<c-up>', function()
             mc.lineAddCursor(-1)
-        end)
+        end, util.map_opts('Multicursor - Add above'))
         set({ 'n', 'x' }, '<c-down>', function()
             mc.lineAddCursor(1)
-        end)
+        end, util.map_opts('Multicursor - Add below'))
 
-        -- Select all matches
-        set({ 'n', 'x' }, '<leader>A', mc.matchAllAddCursors)
+        set({ 'n', 'x' }, '<leader>A', mc.matchAllAddCursors, util.map_opts('Multicursor - Add all matches'))
 
-        -- Keymaps only active when multiple cursors exist
         mc.addKeymapLayer(function(layerSet)
             layerSet({ 'n', 'x' }, 'n', function()
                 mc.matchAddCursor(1)
@@ -49,7 +46,6 @@ return {
             end)
         end)
 
-        -- Highlight groups
         local hl = vim.api.nvim_set_hl
         hl(0, 'MultiCursorCursor', { reverse = true })
         hl(0, 'MultiCursorVisual', { link = 'Visual' })

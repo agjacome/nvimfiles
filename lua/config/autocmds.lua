@@ -38,6 +38,15 @@ autocmd('CmdlineLeave', {
     end,
 })
 
+-- Restore <cr> in quickfix window
+autocmd('FileType', {
+    group = group,
+    pattern = 'qf',
+    callback = function(event)
+        vim.keymap.set('n', '<cr>', '<cr>', { buffer = event.buf })
+    end,
+})
+
 -- Highlight yanked text
 autocmd('TextYankPost', {
     group = group,

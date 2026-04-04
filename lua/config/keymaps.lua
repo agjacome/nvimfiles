@@ -85,15 +85,6 @@ vim.keymap.set('n', ']d', function()
     vim.diagnostic.jump({ count = 1 })
 end, util.map_opts('Diagnostics - Next'))
 
--- quickfix
-vim.api.nvim_create_autocmd('FileType', {
-    group = vim.api.nvim_create_augroup('quickfix', { clear = true }),
-    pattern = 'qf',
-    callback = function(event)
-        vim.keymap.set('n', '<cr>', '<cr>', { buffer = event.buf })
-    end,
-})
-
 -- custom
 vim.keymap.set('n', '<leader>X', '<cmd>source %<cr>', util.map_opts('Source - Current file'))
 vim.keymap.set('v', '<leader>X', ':lua<cr>', util.map_opts('Source - Current selection'))
