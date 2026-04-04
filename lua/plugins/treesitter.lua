@@ -5,74 +5,32 @@ return {
         lazy = false,
         build = ":TSUpdate",
         config = function()
-            local bundled = { c = true, lua = true, markdown = true, markdown_inline = true, query = true, vim = true, vimdoc = true }
-            local ignored_filetypes = { lazy = true, lazy_backdrop = true }
             local max_filesize = 100 * 1024 -- 100KB
 
             vim.api.nvim_create_autocmd("FileType", {
                 callback = function(args)
-                    local ft = vim.bo[args.buf].filetype
-                    if ignored_filetypes[ft] then return end
-
                     local ok, stats = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(args.buf))
                     if ok and stats and stats.size > max_filesize then return end
 
+                    local ft = vim.bo[args.buf].filetype
                     local lang = vim.treesitter.language.get_lang(ft) or ft
 
                     if not vim.treesitter.language.add(lang) then
-                        if bundled[lang] then return end
-                        local parsers = require("nvim-treesitter.parsers")
-                        if not parsers[lang] then return end
-                        pcall(function()
-                            require("nvim-treesitter").install({ lang }):wait(30000)
-                            if not vim.treesitter.language.add(lang) then return end
-                        end)
+                        local available = vim.g.ts_available
+                            or require("nvim-treesitter").get_available()
+                        if not vim.g.ts_available then
+                            vim.g.ts_available = available
+                        end
+                        if vim.tbl_contains(available, lang) then
+                            require("nvim-treesitter").install(lang)
+                        end
                     end
 
-                    if not pcall(vim.treesitter.start, args.buf) then return end
+                    if not vim.treesitter.language.add(lang) then return end
+                    vim.treesitter.start(args.buf, lang)
                     vim.bo[args.buf].indentexpr = "v:lua.require'nvim-treesitter'.indentexpr()"
                 end,
             })
-
-            -- incremental selection (replaces old nvim-treesitter feature)
-            local node_stack = {}
-
-            vim.keymap.set("n", "<C-space>", function()
-                node_stack = {}
-                local node = vim.treesitter.get_node()
-                if not node then return end
-                local sr, sc, er, ec = node:range()
-                table.insert(node_stack, node)
-                vim.fn.setpos("'<", { 0, sr + 1, sc + 1, 0 })
-                vim.fn.setpos("'>", { 0, er + 1, ec, 0 })
-                vim.cmd("normal! gv")
-            end, { desc = "Init treesitter selection" })
-
-            vim.keymap.set("v", "<C-space>", function()
-                local node = node_stack[#node_stack]
-                if not node then return end
-                local parent = node:parent()
-                if not parent then return end
-                table.insert(node_stack, parent)
-                local sr, sc, er, ec = parent:range()
-                vim.fn.setpos("'<", { 0, sr + 1, sc + 1, 0 })
-                vim.fn.setpos("'>", { 0, er + 1, ec, 0 })
-                vim.cmd("normal! gv")
-            end, { desc = "Expand treesitter selection" })
-
-            vim.keymap.set("v", "<bs>", function()
-                if #node_stack <= 1 then
-                    vim.cmd("normal! \027") -- escape
-                    node_stack = {}
-                    return
-                end
-                table.remove(node_stack)
-                local node = node_stack[#node_stack]
-                local sr, sc, er, ec = node:range()
-                vim.fn.setpos("'<", { 0, sr + 1, sc + 1, 0 })
-                vim.fn.setpos("'>", { 0, er + 1, ec, 0 })
-                vim.cmd("normal! gv")
-            end, { desc = "Shrink treesitter selection" })
         end,
     },
     {
