@@ -7,7 +7,7 @@ return {
             "theHamsta/nvim-dap-virtual-text",
             "nvim-telescope/telescope-dap.nvim",
         },
-        event = "VeryLazy",
+        keys = { "<leader>db", "<leader>du", "<F7>" },
         config = function()
             local Opts = require("agjacome.opts")
             local dap = require("dap")
