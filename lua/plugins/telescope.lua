@@ -68,7 +68,9 @@ return {
             })
         end
 
-        vim.keymap.set('n', '<C-p>', builtin.git_files, util.map_opts('Telescope - Git files'))
+        vim.keymap.set('n', '<C-p>', function()
+            builtin.git_files({ show_untracked = true })
+        end, util.map_opts('Telescope - Git files'))
         vim.keymap.set('n', '<leader>p', find_files, util.map_opts('Telescope - Workspace files'))
         vim.keymap.set('n', '<leader>s', builtin.live_grep, util.map_opts('Telescope - Content'))
         vim.keymap.set('n', '<leader>S', builtin.grep_string, util.map_opts('Telescope - Word under cursor'))
