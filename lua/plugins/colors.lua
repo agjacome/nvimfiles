@@ -38,10 +38,7 @@ return {
                     { 'filename', path = 1 },
                     {
                         function()
-                            return require('config.lsp').progress()
-                        end,
-                        cond = function()
-                            return next(require('config.lsp').progress_cache) ~= nil
+                            return vim.lsp.status()
                         end,
                     },
                 },
