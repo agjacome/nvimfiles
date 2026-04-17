@@ -36,12 +36,16 @@ return {
             sections = {
                 lualine_c = {
                     { 'filename', path = 1 },
-                    {
-                        function()
-                            return vim.lsp.status()
-                        end,
-                    },
                 },
+            },
+        },
+    },
+    {
+        'j-hui/fidget.nvim',
+        event = 'VeryLazy',
+        opts = {
+            notification = {
+                window = { winblend = 0 },
             },
         },
     },
