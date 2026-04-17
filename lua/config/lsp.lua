@@ -52,5 +52,13 @@ vim.diagnostic.config({
     },
 })
 
+-- Show LSP progress in cmdline
+vim.api.nvim_create_autocmd('LspProgress', {
+    desc = 'LSP progress',
+    callback = function()
+        vim.api.nvim_echo({ { vim.lsp.status(), 'NonText' } }, false, {})
+    end,
+})
+
 -- Enable servers
 vim.lsp.enable({ 'lua_ls', 'bashls', 'dockerls', 'jsonls', 'marksman', 'nixd', 'taplo', 'yamlls' })
